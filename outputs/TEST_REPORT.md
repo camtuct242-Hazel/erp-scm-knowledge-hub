@@ -249,7 +249,7 @@
 
 ---
 
-### 2.12 Dọn Sạch Emoji Giao Diện & Xác Thực Triển Khai GitHub (Phase 1 & Phase 2)
+### 2.12 Dọn Sạch Emoji Giao Diện & Triển Khai GitHub (Phase 1 & Phase 2)
 - **Phương pháp**: Rà soát tự động toàn bộ 37 tệp tin mã nguồn, Markdown và JSON trong `outputs/` bằng bộ công cụ Unicode Classifier (`scripts/scan_all_outputs_emojis.py` và `scripts/test_emojis_phase1.py`), kết hợp kiểm thử hồi quy trình duyệt Edge Headless qua CDP.
 - **Tổng quan dọn dẹp Emoji (Phase 1)**:
   - Loại bỏ hoàn toàn 71 emoji trang trí mang tính biểu tượng/gạch đầu dòng/nhãn nút khỏi toàn bộ giao diện: Thanh điều hướng, Trang chủ, Đầu mục chương, Thẻ Flashcards, Từ điển Glossary, Đề thi trắc nghiệm, Hồ sơ Tình huống Case Studies, Trợ lý AI và Chân trang.
@@ -267,7 +267,11 @@
 - **Thông tin Triển khai GitHub (Phase 2)**:
   - **Kho lưu trữ từ xa (Remote)**: `https://github.com/camtuct242-Hazel/erp-scm-knowledge-hub.git`
   - **Nhánh chính (Branch)**: `main`
-  - **Quy chuẩn tệp tải lên**: Bao gồm toàn bộ `outputs/` (ứng dụng web, nội dung, cơ sở dữ liệu, tài liệu nghiệm thu), `netlify.toml`, `.gitignore`, `README.md` chuẩn học thuật. Loại trừ 100% `references/`, bản sao lưu an toàn `outputs/backup_before_enhancement/`, tệp tạm thời và bộ nhớ đệm.
+  - **Mã băm Commit (Commit Hash)**: `57094747f28855038c3c7dbc0f6f15c0df13f359`
+  - **Thông điệp Commit (Commit Message)**: `Polish UI and remove decorative emojis`
+  - **Trạng thái đẩy mã (Push Status)**: **SUCCESS** (Đã đồng bộ lên GitHub, xác thực phản hồi JSON API thành công).
+  - **Cấu hình xuất bản (Deployment Status)**: Tích hợp tệp cấu hình `netlify.toml` (publish: `outputs/app`) và entry point `index.html` chuyển hướng tự động, sẵn sàng cho triển khai tức thì trên Netlify, Vercel hoặc GitHub Pages.
+  - **Vấn đề còn tồn đọng (Unresolved Issues)**: Không có (0 defects).
 
 ---
 
