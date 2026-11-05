@@ -15,14 +15,12 @@
 - **Mô hình Vận tải Tuyến tính (Linear Programming - Transportation Model)**: Thuật toán Northwest Corner, VAM (Vogel's Approximation Method), Stepping-Stone, MODI (Modified Distribution Method), kỹ thuật giải toán cực tiểu hóa chi phí và các biến thể thoái vị (degeneracy), mất cân đối cung cầu.
 - **Quản trị Tồn kho Khoa học (Inventory Management)**: Lô đặt hàng kinh tế (EOQ), Lượng sản xuất kinh tế (EPQ), Mô hình chiết khấu theo số lượng (Quantity Discount), Điểm tái đặt hàng (ROP) kèm tồn kho an toàn (Safety Stock).
 
-Nền tảng được xây dựng theo phong cách thiết kế **Balletcore Aesthetic** (gam màu Dusty Rose, Soft Mauve, Warm Linen), tối ưu hóa trải nghiệm đọc học thuật dài hạn, không gây mỏi mắt và loại bỏ hoàn toàn các emoji trang trí không cần thiết.
-
 ---
 
 ## 2. Kiến Trúc Tính Năng Cốt Lõi (Core Features)
 
 1. **Giáo trình Điện tử 6 Chương Toàn diện (Interactive Textbook)**:
-   - Toàn bộ nội dung học liệu 6 tuần chuẩn giáo trình UEH 2020 song ngữ (Việt - Anh).
+   - Toàn bộ nội dung học liệu 6 chương chuẩn giáo trình UEH 2020 song ngữ (Việt - Anh).
    - Tích hợp điều hướng 2 đầu trang (`← Chương trước | Danh sách chương | Chương tiếp theo →`).
    - Khối phân tích nghiệp vụ độc quyền **BA Perspective Callouts**.
    - Câu hỏi ôn tập cuối chương với cơ chế Accordion bảo mật đáp án.
@@ -89,20 +87,7 @@ ERP (SCM)/
 
 ---
 
-## 4. Hướng Dẫn Vận Hành (Getting Started)
-
-### Chạy Cục Bộ (Offline Local Mode)
-Ứng dụng được thiết kế hoàn toàn tương thích với giao thức `file://` và không yêu cầu cài đặt máy chủ hay kết nối mạng Internet.
-
-1. Tải hoặc clone mã nguồn về thiết bị:
-   ```bash
-   git clone https://github.com/camtuct242-Hazel/erp-scm-knowledge-hub.git
-   ```
-2. Mở trực tiếp tệp `outputs/app/index.html` bằng bất kỳ trình duyệt hiện đại nào (Google Chrome, Microsoft Edge, Mozilla Firefox, Safari).
-
----
-
-## 5. Tác Quyền & Định Chuẩn Học Thuật (Attribution & Framework)
+## 4. Tác Quyền & Định Chuẩn Học Thuật (Attribution & Framework)
 
 - **Tác giả nền tảng**: **Nguyễn Đăng Cẩm Tú (Hazel)**
 - **Giáo trình tham chiếu chính**: Giáo trình *ERP Transportation & Inventory Textbook for Students* (UEH 2020).
