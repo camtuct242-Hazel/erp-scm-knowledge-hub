@@ -1,0 +1,38 @@
+# ==============================================================================
+# ERP & SCM Knowledge Hub - Git Ignore Configuration
+# ==============================================================================
+
+# Reference materials & raw textbooks (Strictly confidential / proprietary)
+references/
+*.pdf
+case_*.txt
+textbook_dump.txt
+
+# Safety backups
+outputs/backup_before_enhancement/
+backup*/
+*_backup/
+
+# Python cache & virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.pytest_cache/
+
+# Test artifacts, logs & browser profiles
+.system_generated/
+*.log
+scratch/
+test_profile/
+edge_profile/
+*.tmp
+outputs/documentation/phase3c_results.json
+
+# Local IDE & OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

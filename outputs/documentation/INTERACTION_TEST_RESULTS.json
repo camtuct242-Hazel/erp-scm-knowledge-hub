@@ -1,0 +1,97 @@
+[
+  {
+    "name": "Global App & APP_DATA Initialization",
+    "status": "PASS",
+    "details": "Result: True"
+  },
+  {
+    "name": "Navigation Destination: 'dashboard'",
+    "status": "PASS",
+    "details": "Active Section: view-dashboard"
+  },
+  {
+    "name": "Navigation Destination: 'chapters'",
+    "status": "PASS",
+    "details": "Active Section: view-chapters"
+  },
+  {
+    "name": "Navigation Destination: 'exams'",
+    "status": "PASS",
+    "details": "Active Section: view-exams"
+  },
+  {
+    "name": "Navigation Destination: 'flashcards'",
+    "status": "PASS",
+    "details": "Active Section: view-flashcards"
+  },
+  {
+    "name": "Navigation Destination: 'glossary'",
+    "status": "PASS",
+    "details": "Active Section: view-glossary"
+  },
+  {
+    "name": "Navigation Destination: 'cases'",
+    "status": "PASS",
+    "details": "Active Section: view-cases"
+  },
+  {
+    "name": "Navigation Destination: 'consultant'",
+    "status": "PASS",
+    "details": "Active Section: view-consultant"
+  },
+  {
+    "name": "Navigation Destination: 'about'",
+    "status": "PASS",
+    "details": "Active Section: view-about"
+  },
+  {
+    "name": "Bilingual Toggle (VI <-> EN)",
+    "status": "PASS",
+    "details": "EN Text: SUPPLY CHAIN MANAGEMENT LEARNI, VI Text: NỀN TẢNG HỌC TẬP ERP & CHUỖI C"
+  },
+  {
+    "name": "Dashboard Quick EOQ Simulator",
+    "status": "PASS",
+    "details": "Q Result: 500 chiếc / đơn, TVC: $2,000.00 / năm"
+  },
+  {
+    "name": "Knowledge Base Reader & Section TOC",
+    "status": "PASS",
+    "details": "TOC Items: 13, Title: CHƯƠNG 01: TỔNG QUAN HỆ THỐNG ERP & BÀI ..."
+  },
+  {
+    "name": "Practice Exam: Option Selection & Instant Feedback",
+    "status": "PASS",
+    "details": "Options: 4, Explanation Visible: True"
+  },
+  {
+    "name": "Timed Exam: 30m Countdown & Auto-Grading",
+    "status": "PASS",
+    "details": "Score: Điểm số: 25 / 25 (100%), History: 1"
+  },
+  {
+    "name": "Flashcards: 3D Flip & Mastered Status",
+    "status": "PASS",
+    "details": "Flipped: True, Mastered Updated: True"
+  },
+  {
+    "name": "Glossary: Live Search & Detail Modal",
+    "status": "PASS",
+    "details": "Found: True, Term: Điểm đến giả định / Đích hư cấu"
+  },
+  {
+    "name": "Case Studies: Texago Mathematical Solver",
+    "status": "PASS",
+    "details": "St. Louis Optimal: True"
+  },
+  {
+    "name": "AI Consultant: Scenarios & Grounded Responses",
+    "status": "PASS",
+    "details": "Chips: True, Analysis accurate: True"
+  },
+  {
+    "name": "About Section: 8th Navigation Target",
+    "status": "PASS",
+    "details": "Active: True, Heading: Về ERP & Supply Chain Manageme..."
+  }
+]

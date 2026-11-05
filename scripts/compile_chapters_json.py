@@ -1,0 +1,171 @@
+import json
+
+chapters = [
+    {
+        "id": "chap-01",
+        "chapter_number": 1,
+        "week": 1,
+        "title": {
+            "vi": "Chương 01: Tổng quan Hệ thống ERP & Bài toán Vận tải Quy hoạch Tuyến tính",
+            "en": "Chapter 01: Introduction to ERP Systems & Linear Programming Transportation Models"
+        },
+        "short_title": {
+            "vi": "Tổng quan ERP & Vận tải Tuyến tính",
+            "en": "ERP Overview & Transportation LP"
+        },
+        "description": {
+            "vi": "Kiến trúc tổng thể ERP, 3 dòng chảy chuỗi cung ứng, mô hình vận tải tuyến tính cân bằng, so sánh Heuristic vs. Tối ưu Simplex LP (bài toán công ty P&T).",
+            "en": "ERP enterprise architecture, 3 supply chain flows, balanced LP transportation model, heuristic vs. Simplex LP optimization (P&T Company case)."
+        },
+        "reading_time_minutes": 25,
+        "sections_count": 12,
+        "topics": [
+            "Kiến trúc ERP & 3 dòng chảy SCM",
+            "Mô hình Vận tải Tuyến tính cân bằng",
+            "Thuật toán Simplex LP & Excel Solver",
+            "Phân tích P&T Company ($179.850 -> $152.535)",
+            "Góc nhìn Business Analyst & SAP TM"
+        ],
+        "markdown_file": "outputs/content/chapters/CHAP_01.md"
+    },
+    {
+        "id": "chap-02",
+        "chapter_number": 2,
+        "week": 2,
+        "title": {
+            "vi": "Chương 02: Các Biến thể Bài toán Vận tải & Ràng buộc Thực tế",
+            "en": "Chapter 02: Transportation Problem Variations & Real-World Constraints"
+        },
+        "short_title": {
+            "vi": "Biến thể Vận tải & Big-M Tuyến Cấm",
+            "en": "Transportation Variations & Big-M"
+        },
+        "description": {
+            "vi": "Mô hình vận tải không cân bằng (Cung khác Cầu), kỹ thuật Dummy Source / Destination, xử lý tuyến cấm bằng phương pháp Big-M (Metro Water, Energetic Co., Better Products Case 2.1).",
+            "en": "Unbalanced transportation models (Supply != Demand), dummy source/destination techniques, prohibited route modeling via Big-M (Metro Water, Energetic Co., Better Products Case 2.1)."
+        },
+        "reading_time_minutes": 25,
+        "sections_count": 12,
+        "topics": [
+            "Vận tải không cân bằng & Năng lực nhàn rỗi",
+            "Khởi tạo Dummy Destination / Dummy Source",
+            "Phương pháp Big-M xử lý tuyến đường cấm",
+            "Phân bổ sản phẩm Better Products Case 2.1 ($3.260/ngày)",
+            "Cấu hình Incompatibility Rules trong ERP"
+        ],
+        "markdown_file": "outputs/content/chapters/CHAP_02.md"
+    },
+    {
+        "id": "chap-03",
+        "chapter_number": 3,
+        "week": 3,
+        "title": {
+            "vi": "Chương 03: Mở rộng Mô hình Vận tải, Khoảng Nhu cầu & Bài toán Phân công",
+            "en": "Chapter 03: Advanced Transportation Extensions, Demand Ranges & Assignment Models"
+        },
+        "short_title": {
+            "vi": "Khoảng Nhu cầu & Phân công Nhị phân 0-1",
+            "en": "Demand Ranges & 0-1 Assignment"
+        },
+        "description": {
+            "vi": "Khoảng nhu cầu [Min, Max] (Middletown School District), chuyển đổi cực đại hóa lợi nhuận sang cực tiểu hóa chi phí (Nifty Co.), bài toán phân công 0-1, thuật toán Hungarian, phân tích chuyên biệt Case 2.2.",
+            "en": "Demand ranges [Min, Max] (Middletown School District), profit maximization transformation (Nifty Co.), binary 0-1 assignment, Hungarian algorithm, Better Products Case 2.2 dedication."
+        },
+        "reading_time_minutes": 30,
+        "sections_count": 12,
+        "topics": [
+            "Khoảng nhu cầu tiếp nhận [L_j, U_j]",
+            "Cực đại hóa lợi nhuận (c_ij = P_max - P_ij)",
+            "Bài toán Phân công Nhị phân 0-1 & Thuật toán Hungarian",
+            "Better Products Case 2.2: Phân công nguyên khối ($3.290/ngày)",
+            "Đánh đổi vận hành & Cấu hình Dedicated Line trên SAP PP"
+        ],
+        "markdown_file": "outputs/content/chapters/CHAP_03.md"
+    },
+    {
+        "id": "chap-04",
+        "chapter_number": 4,
+        "week": 4,
+        "title": {
+            "vi": "Chương 04: Quản trị Tồn kho Khoa học & Mô hình EOQ Cơ bản",
+            "en": "Chapter 04: Scientific Inventory Management & The Classical EOQ Model"
+        },
+        "short_title": {
+            "vi": "Quản trị Tồn kho Khoa học & EOQ Cơ bản",
+            "en": "Scientific Inventory & Classical EOQ"
+        },
+        "description": {
+            "vi": "4 thành phần chi phí tồn kho (c, K, h, p), dẫn xuất công thức Wilson EOQ, phân tích đường cong chi phí đánh đổi, tình huống lốp xe Atlantic Coast Tire (ACT), ROP, GRG Nonlinear Solver.",
+            "en": "4 inventory cost components (c, K, h, p), Wilson EOQ formula derivation, trade-off curve analysis, Atlantic Coast Tire (ACT) baseline case, ROP calculation, GRG Nonlinear Solver."
+        },
+        "reading_time_minutes": 25,
+        "sections_count": 12,
+        "topics": [
+            "4 cấu phần chi phí tồn kho (c, K, h, p)",
+            "Dẫn xuất toán học công thức Wilson EOQ",
+            "Điểm cân bằng chi phí AOC = AHC",
+            "Bài toán ACT: Chuyển từ Q=1000 sang Q*=573 (tiết kiệm $382,52/năm)",
+            "Điểm đặt hàng lại ROP = d * L và cấu hình SAP MM MRP"
+        ],
+        "markdown_file": "outputs/content/chapters/CHAP_04.md"
+    },
+    {
+        "id": "chap-05",
+        "chapter_number": 5,
+        "week": 5,
+        "title": {
+            "vi": "Chương 05: Các Biến thể Mô hình Quản trị Tồn kho Thực tế",
+            "en": "Chapter 05: Deterministic Inventory Models Under Complex Business Conditions"
+        },
+        "short_title": {
+            "vi": "Biến thể EOQ: Thiếu hàng, Chiết khấu & EPQ",
+            "en": "EOQ Variations: Backorders, Discounts & EPQ"
+        },
+        "description": {
+            "vi": "3 biến thể thực tế: Mô hình thiếu hàng có kế hoạch (ACT Backorders), Chiết khấu mua hàng số lượng lớn (Quantity Discounts & Breakpoints), Mô hình sản xuất kinh tế bổ sung dần EPQ (Case Study TV SOCA).",
+            "en": "3 real-world deterministic variants: Planned shortages/backorders (ACT Tire), All-units quantity discounts & breakpoints, Economic Production Quantity (EPQ) gradual replenishment (SOCA TV Case)."
+        },
+        "reading_time_minutes": 30,
+        "sections_count": 12,
+        "topics": [
+            "EOQ cho phép thiếu hàng có kế hoạch (ACT Q*=716, S*=257)",
+            "Thuật toán Chiết khấu số lượng & Kiểm tra Breakpoint",
+            "Mô hình bổ sung dần EPQ: Tồn kho cực đại I_max = Q(1 - d/p)",
+            "Tình huống TV SOCA: Tối ưu từ Q=30k lên Q*=50k (tiết kiệm $16k/năm)",
+            "Cấu hình điều kiện giá Scales trên SAP Purchasing & aATP"
+        ],
+        "markdown_file": "outputs/content/chapters/CHAP_05.md"
+    },
+    {
+        "id": "chap-06",
+        "chapter_number": 6,
+        "week": 6,
+        "title": {
+            "vi": "Chương 06: Tích hợp Quy trình Doanh nghiệp & Vận hành Chuỗi Cung ứng Toàn diện",
+            "en": "Chapter 06: Enterprise Process Integration & Cross-Functional SCM Orchestration"
+        },
+        "short_title": {
+            "vi": "Tích hợp Quy trình Doanh nghiệp & Vận hành SCM",
+            "en": "Process Integration & SCM Orchestration"
+        },
+        "description": {
+            "vi": "Tổng hợp tích hợp đa phân hệ (MM, PP, SD, FI/CO, TM, EWM), 3 trụ cột Dữ liệu Chủ (Master Data Governance), 3 chu trình khép kín O2C, P2P (3-Way Matching), Plan-to-Produce, lộ trình BA.",
+            "en": "Cross-module enterprise synthesis (MM, PP, SD, FI/CO, TM, EWM), 3 Master Data pillars, 3 closed-loop cycles O2C, P2P (3-Way Matching), Plan-to-Produce, Senior BA governance framework."
+        },
+        "reading_time_minutes": 30,
+        "sections_count": 12,
+        "topics": [
+            "Đồng bộ hóa thời gian thực đa phân hệ (MM, PP, SD, FI/CO, TM, EWM)",
+            "3 trụ cột Master Data: Material, Business Partner, Manufacturing",
+            "Chu trình Procure-to-Pay (P2P) & Cơ chế đối chiếu 3 chiều (3-Way Match)",
+            "Chu trình Order-to-Cash (O2C) & Plan-to-Produce",
+            "Khung năng lực Senior Business Analyst & Chiến lược UAT / Go-Live"
+        ],
+        "markdown_file": "outputs/content/chapters/CHAP_06.md"
+    }
+]
+
+with open("outputs/data/chapters.json", "w", encoding="utf-8") as f:
+    json.dump(chapters, f, ensure_ascii=False, indent=2)
+
+print("Saved outputs/data/chapters.json with 6 chapters.")

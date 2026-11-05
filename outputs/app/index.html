@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ERP & SCM Knowledge Hub | Nền Tảng Học Tập ERP & Chuỗi Cung Ứng</title>
+  
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- KaTeX for Math (Local Offline) -->
+  <link rel="stylesheet" href="vendor/katex/katex.min.css">
+  <script src="vendor/katex/katex.min.js"></script>
+  <script src="vendor/katex/auto-render.min.js"></script>
+  
+  <!-- Marked.js for Markdown (Local Offline) -->
+  <script src="vendor/marked.min.js"></script>
+  
+  <!-- Mermaid for Diagrams -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.2.4/dist/mermaid.min.js"></script>
+  
+  <!-- App Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Navigation Bar -->
+    <header class="navbar">
+      <div class="brand-wrapper" onclick="App.navigateTo('dashboard')">
+        <div class="brand-icon">E</div>
+        <div>
+          <div class="brand-title">ERP Knowledge Hub</div>
+          <div class="brand-sub" data-i18n="brand_sub">Supply Chain Management Learning Platform</div>
+        </div>
+      </div>
+
+      <nav>
+        <ul class="nav-links">
+          <li><button class="nav-btn active" data-view="dashboard" onclick="App.navigateTo('dashboard')"><span data-i18n="nav_dashboard">Tổng Quan</span></button></li>
+          <li><button class="nav-btn" data-view="chapters" onclick="App.navigateTo('chapters')"><span data-i18n="nav_chapters">Giáo Trình</span></button></li>
+          <li><button class="nav-btn" data-view="exams" onclick="App.navigateTo('exams')"><span data-i18n="nav_exams">Luyện Thi & Trắc Nghiệm</span></button></li>
+          <li><button class="nav-btn" data-view="flashcards" onclick="App.navigateTo('flashcards')"><span data-i18n="nav_flashcards">Flashcards</span></button></li>
+          <li><button class="nav-btn" data-view="glossary" onclick="App.navigateTo('glossary')"><span data-i18n="nav_glossary">Thuật Ngữ</span></button></li>
+          <li><button class="nav-btn" data-view="cases" onclick="App.navigateTo('cases')"><span data-i18n="nav_cases">Case Studies</span></button></li>
+          <li><button class="nav-btn" data-view="consultant" onclick="App.navigateTo('consultant')"><span data-i18n="nav_consultant">Cố Vấn AI</span></button></li>
+          <li><button class="nav-btn" data-view="about" onclick="App.navigateTo('about')"><span data-i18n="nav_about">Giới Thiệu</span></button></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Floating Exam Timer if active -->
+        <div id="navbar-exam-timer" class="timer-box" style="display: none; padding: 0.3rem 0.8rem; font-size: 0.9rem;">
+          <span id="nav-timer-val">30:00</span>
+        </div>
+
+        <!-- Language Switcher -->
+        <div class="lang-toggle">
+          <button id="lang-btn-vi" class="lang-btn active" onclick="App.setLanguage('vi')">VIE</button>
+          <button id="lang-btn-en" class="lang-btn" onclick="App.setLanguage('en')">ENG</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+
+      <!-- ================= VIEW: DASHBOARD ================= -->
+      <section id="view-dashboard" class="view-section active">
+        <div class="hero-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div style="max-width: 800px;">
+              <span class="badge badge-rose" style="margin-bottom: 0.8rem;" data-i18n="dash_hero_badge">Nền Tảng Đào Tạo Chuẩn Doanh Nghiệp</span>
+              <h1 data-i18n="dash_hero_title">Hệ Thống Tri Thức ERP & Quản Trị Chuỗi Cung Ứng</h1>
+              <p style="font-size: 1.05rem; color: var(--muted-mauve); margin-top: 0.5rem;" data-i18n="dash_hero_desc">
+                Khám phá 6 chương học giáo trình chuẩn mực, 250 câu hỏi luyện thi có lời giải chi tiết, 4 tình huống nghiên cứu doanh nghiệp kinh điển (Texago, Better Products, ACT, SOCA) và công cụ tối ưu hóa định lượng.
+              </p>
+            </div>
+            <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
+              <button class="btn btn-primary" onclick="App.navigateTo('chapters')"><span data-i18n="btn_explore_curriculum">Vào Học Giáo Trình</span> →</button>
+              <button class="btn btn-secondary" onclick="App.navigateTo('exams')"><span data-i18n="btn_take_exam">Thi Thử Ngay</span></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metric Cards Grid -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label" data-i18n="stat_chapters_label">Chương Học Giáo Trình</div>
+            <div class="stat-value" id="stat-chapters-val">6 / 6</div>
+            <div class="stat-sub" data-i18n="stat_chapters_sub">12 mục sư phạm chuẩn mỗi chương</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label" data-i18n="stat_questions_label">Ngân Hàng Câu Hỏi</div>
+            <div class="stat-value">250</div>
+            <div class="stat-sub" data-i18n="stat_questions_sub">10 Đề thi × 25 câu có giải thích chi tiết</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label" data-i18n="stat_flashcards_label">Thẻ Ghi Nhớ Đã Thuộc</div>
+            <div class="stat-value" id="stat-flashcards-val">0 / 30</div>
+            <div class="stat-sub" data-i18n="stat_flashcards_sub">Phân loại theo công thức & quy tắc</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label" data-i18n="stat_exam_avg_label">Điểm Thi Thử Bình Quân</div>
+            <div class="stat-value" id="stat-exam-avg-val">--%</div>
+            <div class="stat-sub" id="stat-exam-count-sub">Chưa có lượt thi tính giờ</div>
+          </div>
+        </div>
+
+        <!-- Interactive Quick EOQ Calculator Widget -->
+        <div class="app-card" style="margin-bottom: 2rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.8rem;">
+            <div>
+              <span class="badge badge-beige" data-i18n="widget_calc_badge">Công Cụ Tương Tác SCM</span>
+              <h2 style="font-size: 1.35rem; margin-top: 0.2rem;" data-i18n="widget_calc_title">Mô Phỏng Nhanh Tối Ưu Tồn Kho EOQ & Điểm Đặt Hàng ROP</h2>
+            </div>
+            <button class="btn btn-outline btn-sm" onclick="App.resetQuickCalc()" data-i18n="btn_reset_default">Mặc Định (ACT Tire)</button>
+          </div>
+          <div class="solver-grid">
+            <div>
+              <div class="input-group">
+                <label data-i18n="lbl_annual_demand">Nhu cầu hàng năm (D - chiếc/năm):</label>
+                <input type="number" id="qc-d" class="input-field" value="6000" oninput="App.runQuickCalc()">
+              </div>
+              <div class="input-group">
+                <label data-i18n="lbl_setup_cost">Chi phí đặt hàng (K - $/đơn):</label>
+                <input type="number" id="qc-k" class="input-field" value="115" oninput="App.runQuickCalc()">
+              </div>
+              <div class="input-group">
+                <label data-i18n="lbl_holding_cost">Chi phí lưu kho đơn vị (h - $/chiếc/năm):</label>
+                <input type="number" id="qc-h" class="input-field" value="4.20" step="0.1" oninput="App.runQuickCalc()">
+              </div>
+              <div class="input-group">
+                <label data-i18n="lbl_lead_time">Thời gian giao hàng Lead Time (L - ngày làm việc):</label>
+                <input type="number" id="qc-l" class="input-field" value="7.5" step="0.5" oninput="App.runQuickCalc()">
+              </div>
+            </div>
+            <div class="result-box">
+              <h3 style="font-size: 1.15rem; margin-bottom: 1rem; color: var(--coffee-bean);" data-i18n="widget_calc_results_title">Kết Quả Tính Toán Tối Ưu:</h3>
+              <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed var(--border-color); padding-bottom: 0.4rem;">
+                  <span data-i18n="res_optimal_lot">Quy mô đặt hàng tối ưu (Q*):</span>
+                  <strong id="qc-res-q" style="font-family: var(--font-mono); font-size: 1.1rem; color: var(--coffee-bean);">573 chiếc</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed var(--border-color); padding-bottom: 0.4rem;">
+                  <span data-i18n="res_orders_count">Số đơn hàng/năm (N):</span>
+                  <strong id="qc-res-n" style="font-family: var(--font-mono);">10,5 đơn</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed var(--border-color); padding-bottom: 0.4rem;">
+                  <span data-i18n="res_reorder_point">Điểm đặt hàng lại (ROP = d × L):</span>
+                  <strong id="qc-res-rop" style="font-family: var(--font-mono); color: var(--dusty-rose-dark);">180 chiếc</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed var(--border-color); padding-bottom: 0.4rem;">
+                  <span data-i18n="res_tvc">Tổng chi phí biến đổi (TVC*):</span>
+                  <strong id="qc-res-tvc" style="font-family: var(--font-mono); font-size: 1.1rem; color: var(--success);">$2.407,48 / năm</strong>
+                </div>
+                <div style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--muted-mauve); line-height: 1.4;" data-i18n="widget_calc_note">
+                  * Tại điểm tối ưu Q*, chi phí đặt hàng hàng năm cân bằng chính xác với chi phí lưu kho hàng năm ($1.203,74 = $1.203,74).
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Learning Pathway Roadmap -->
+        <div class="page-header" style="margin-top: 2rem;">
+          <div>
+            <h2 data-i18n="dash_pathway_title">Lộ Trình Học Tập Tích Hợp (Weeks 1 - 6)</h2>
+            <p style="color: var(--muted-mauve); font-size: 0.9rem;" data-i18n="dash_pathway_desc">Tiến trình chuẩn mực từ toán tối ưu mạng lưới đến quản trị tồn kho và tích hợp ERP</p>
+          </div>
+        </div>
+        <div class="chapters-grid" id="dashboard-chapters-grid">
+          <!-- Dynamically populated via app.js -->
+        </div>
+      </section>
+
+      <!-- ================= VIEW: CHAPTERS LIST ================= -->
+      <section id="view-chapters" class="view-section">
+        <div class="page-header">
+          <div>
+            <span class="badge badge-rose" data-i18n="badge_curriculum">Giáo Trình Trực Tuyến</span>
+            <h1 data-i18n="chapters_list_title">Danh Sách Các Chương Học Chuyên Sâu</h1>
+            <p style="color: var(--muted-mauve); font-size: 0.92rem;" data-i18n="chapters_list_sub">Mỗi chương được xây dựng chuẩn mực theo cấu trúc 12 mục sư phạm nghiêm ngặt</p>
+          </div>
+        </div>
+        <div class="chapters-grid" id="full-chapters-grid">
+          <!-- Dynamically populated -->
+        </div>
+      </section>
+
+      <!-- ================= VIEW: CHAPTER READER ================= -->
+      <!-- ================= VIEW: CHAPTER READER ================= -->
+      <section id="view-chapter-reader" class="view-section">
+        <!-- Top Navigation & Action Bar -->
+        <div class="chapter-reader-top-bar">
+          <div class="chapter-nav-cluster">
+            <button class="btn btn-outline btn-sm chapter-nav-btn" id="chapter-nav-prev-top" onclick="App.prevChapter()">
+              ← <span data-i18n="btn_prev_chapter">Chương trước</span>
+            </button>
+            <button class="btn btn-outline btn-sm chapter-nav-btn" id="chapter-nav-list-top" onclick="App.navigateTo('chapters')">
+              <span data-i18n="btn_chapter_list">Danh sách chương</span>
+            </button>
+            <button class="btn btn-outline btn-sm chapter-nav-btn" id="chapter-nav-next-top" onclick="App.nextChapter()">
+              <span data-i18n="btn_next_chapter">Chương tiếp theo</span> →
+            </button>
+          </div>
+          <div style="display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap;">
+            <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer; font-size: 0.88rem; font-weight: 600;">
+              <input type="checkbox" id="chapter-completed-checkbox" onchange="App.toggleChapterCompleted()">
+              <span data-i18n="chk_mark_completed">Đã hoàn thành chương này</span>
+            </label>
+            <button class="btn btn-secondary btn-sm" onclick="App.jumpToChapterExam()"><span data-i18n="btn_practice_this_chapter">Luyện câu hỏi chương này</span> →</button>
+          </div>
+        </div>
+
+        <!-- Chapter Header Banner -->
+        <div class="chapter-header-banner">
+          <span class="badge badge-rose" id="chapter-reader-badge">Chương 01</span>
+          <h1 id="chapter-reader-title" class="chapter-banner-title">Tổng quan Hệ thống ERP</h1>
+          <div id="chapter-reader-subtitle" class="chapter-banner-subtitle">Cấu trúc 12 phần sư phạm chuẩn mực</div>
+        </div>
+
+        <div class="chapter-reader-layout">
+          <!-- Sticky Table of Contents -->
+          <aside class="chapter-sidebar">
+            <h4 style="font-size: 0.95rem; margin-bottom: 1rem; color: var(--coffee-bean); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;" data-i18n="toc_title">Mục Lục 12 Phần</h4>
+            <ul class="chapter-nav-list" id="chapter-toc-list">
+              <!-- Dynamically populated -->
+            </ul>
+          </aside>
+
+          <!-- Rendered Article Body & Bottom Nav -->
+          <div style="flex: 1; min-width: 0;">
+            <article class="chapter-article" id="chapter-content-body">
+              <!-- Rendered markdown with KaTeX & Mermaid -->
+            </article>
+
+            <!-- Bottom Chapter Navigation -->
+            <div class="chapter-reader-bottom-nav">
+              <button class="btn btn-outline chapter-nav-btn" id="chapter-nav-prev-bottom" onclick="App.prevChapter()">
+                ← <span data-i18n="btn_prev_chapter">Chương trước</span>
+              </button>
+              <button class="btn btn-outline chapter-nav-btn" id="chapter-nav-list-bottom" onclick="App.navigateTo('chapters')">
+                <span data-i18n="btn_chapter_list">Danh sách chương</span>
+              </button>
+              <button class="btn btn-outline chapter-nav-btn" id="chapter-nav-next-bottom" onclick="App.nextChapter()">
+                <span data-i18n="btn_next_chapter">Chương tiếp theo</span> →
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= VIEW: EXAM SELECTION ================= -->
+      <section id="view-exams" class="view-section">
+        <div class="page-header">
+          <div>
+            <span class="badge badge-rose" data-i18n="badge_assessment">Trung Tâm Đánh Giá</span>
+            <h1 data-i18n="exams_center_title">Trung Tâm Luyện Thi & Thi Tính Giờ (250 Câu Hỏi)</h1>
+            <p style="color: var(--muted-mauve); font-size: 0.92rem;" data-i18n="exams_center_sub">Lựa chọn 1 trong 10 đề thi chuẩn mực (mỗi đề 25 câu: 40% Cơ bản, 40% Trung bình, 20% Nâng cao)</p>
+          </div>
+          <div style="display: flex; gap: 0.5rem;">
+            <span class="badge badge-beige">10 Exams</span>
+            <span class="badge badge-rose">250 Questions</span>
+          </div>
+        </div>
+
+        <!-- Mode selector info card -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+          <div class="app-card" style="border-left: 4px solid var(--info);">
+            <h3 style="font-size: 1.15rem; margin-bottom: 0.4rem;" data-i18n="mode_practice_title">Chế Độ Luyện Tập (Practice Mode)</h3>
+            <p style="font-size: 0.88rem; color: var(--muted-mauve); margin-bottom: 0.8rem;" data-i18n="mode_practice_desc">Không giới hạn thời gian. Hiển thị đáp án đúng/sai ngay lập tức khi click chọn phương án kèm theo lời giải thích chi tiết cặn kẽ.</p>
+            <span class="badge badge-info" data-i18n="mode_practice_badge">Tự học & Tra cứu</span>
+          </div>
+          <div class="app-card" style="border-left: 4px solid var(--danger);">
+            <h3 style="font-size: 1.15rem; margin-bottom: 0.4rem;" data-i18n="mode_timed_title">Chế Độ Thi Tính Giờ (Timed Test Mode)</h3>
+            <p style="font-size: 0.88rem; color: var(--muted-mauve); margin-bottom: 0.8rem;" data-i18n="mode_timed_desc">Đồng hồ đếm ngược 30 phút. Bảng điều hướng 25 câu hỏi, đánh dấu câu cần xem lại, nộp bài có xác nhận và tự động nộp khi hết giờ.</p>
+            <span class="badge badge-danger" data-i18n="mode_timed_badge">Áp lực thi thật</span>
+          </div>
+        </div>
+
+        <div class="chapters-grid" id="exam-cards-grid">
+          <!-- Dynamically populated 10 exams -->
+        </div>
+      </section>
+
+      <!-- ================= VIEW: ACTIVE EXAM ================= -->
+      <section id="view-exam-active" class="view-section">
+        <div class="exam-layout">
+          <!-- Main Question Box -->
+          <div class="exam-main">
+            <div class="exam-meta-bar">
+              <div>
+                <span class="badge badge-rose" id="active-exam-badge">Exam 01</span>
+                <span class="badge badge-beige" id="active-exam-difficulty" style="margin-left: 0.4rem;">Intermediate</span>
+                <span class="badge badge-info" id="active-exam-mode-badge" style="margin-left: 0.4rem;">Timed Mode</span>
+              </div>
+              <div id="active-timer-box" class="timer-box">
+                <span id="active-timer-display">30:00</span>
+              </div>
+            </div>
+
+            <div class="question-box">
+              <div class="question-number" id="active-q-number">Câu hỏi 1 / 25</div>
+              <div class="question-text" id="active-q-text">Đang tải nội dung câu hỏi...</div>
+
+              <div class="options-list" id="active-options-list">
+                <!-- 4 Options rendered here -->
+              </div>
+
+              <!-- Instant explanation (in Practice Mode) -->
+              <div id="active-practice-explanation" class="explanation-card" style="display: none;">
+                <div style="font-weight: 700; color: var(--coffee-bean); margin-bottom: 0.4rem;" data-i18n="exp_title">Giải thích đáp án:</div>
+                <div id="active-exp-content" style="font-size: 0.92rem; line-height: 1.55;"></div>
+              </div>
+            </div>
+
+            <!-- Question Controls -->
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 1.2rem; flex-wrap: wrap; gap: 0.8rem;">
+              <button class="btn btn-outline" id="btn-prev-q" onclick="App.prevQuestion()">← <span data-i18n="btn_prev_q">Câu Trước</span></button>
+              <div style="display: flex; gap: 0.6rem;">
+                <button class="btn btn-outline btn-sm" id="btn-flag-q" onclick="App.toggleFlagCurrentQuestion()"><span data-i18n="btn_flag_q">Xem lại sau</span></button>
+              </div>
+              <button class="btn btn-primary" id="btn-next-q" onclick="App.nextQuestion()"><span data-i18n="btn_next_q">Câu Kế Tiếp</span> →</button>
+            </div>
+          </div>
+
+          <!-- Question Palette Sidebar -->
+          <aside class="palette-sidebar">
+            <h4 style="font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--coffee-bean);" data-i18n="palette_title">Bảng 25 Câu Hỏi</h4>
+            <div style="font-size: 0.78rem; color: var(--muted-mauve); margin-bottom: 1rem;" id="palette-progress-summary">Đã trả lời: 0 / 25</div>
+            <div class="palette-grid" id="exam-palette-grid">
+              <!-- 25 buttons -->
+            </div>
+            <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+              <button class="btn btn-primary" id="btn-submit-exam-active" style="width: 100%;" onclick="App.handleSubmitExam(event)"><span data-i18n="btn_submit_exam">Nộp Bài Thi</span></button>
+              <button class="btn btn-outline btn-sm" id="btn-exit-exam-active" style="width: 100%; border-color: var(--danger); color: var(--danger);" onclick="App.handleExitExam(event)"><span data-i18n="btn_exit_exam">Thoát bài thi</span></button>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ================= VIEW: EXAM RESULTS ================= -->
+      <section id="view-exam-results" class="view-section">
+        <div class="hero-card" style="text-align: center; max-width: 800px; margin: 0 auto 2rem auto;">
+          <span class="badge" id="result-status-badge" style="margin-bottom: 0.8rem; font-size: 0.85rem; padding: 0.4rem 1rem;">ĐẠT CHUẨN (PASSED)</span>
+          <h1 id="result-score-title">Điểm số: 22 / 25 (88%)</h1>
+          <p id="result-summary-text" style="color: var(--muted-mauve); font-size: 1rem; margin-top: 0.5rem;">
+            Chúc mừng bạn đã hoàn thành xuất sắc bài thi. Bạn đã nắm vững các nguyên lý cốt lõi của chương trình.
+          </p>
+          <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+            <button class="btn btn-primary" onclick="App.reviewAllQuestions()"><span data-i18n="btn_review_answers">Xem Lại Toàn Bộ Câu Hỏi</span></button>
+            <button class="btn btn-secondary" onclick="App.retakeExam()"><span data-i18n="btn_retake_exam">Thi Lại Đề Này</span></button>
+            <button class="btn btn-outline" onclick="App.navigateTo('exams')"><span data-i18n="btn_back_exam_list">Danh Sách Đề Thi</span></button>
+          </div>
+        </div>
+
+        <!-- Topic breakdown & detailed questions review -->
+        <div id="exam-detailed-review-container">
+          <!-- Populated when reviewing answers -->
+        </div>
+      </section>
+
+      <!-- ================= VIEW: FLASHCARDS ================= -->
+      <section id="view-flashcards" class="view-section">
+        <div class="page-header">
+          <div>
+            <span class="badge badge-rose" data-i18n="badge_flashcards">Học Nhanh & Ghi Nhớ Lâu</span>
+            <h1 data-i18n="flashcards_title">Thẻ Ghi Nhớ Khái Niệm, Công Thức & Quy Tắc ERP</h1>
+            <p style="color: var(--muted-mauve); font-size: 0.92rem;" data-i18n="flashcards_sub">Lật thẻ để kiểm tra phản xạ kiến thức. Đánh dấu thẻ đã thuộc để tối ưu lộ trình lặp lại ngắt quãng (Spaced Repetition).</p>
+          </div>
+          <div style="display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap;">
+            <span class="badge badge-beige" id="fc-progress-counter">1 / 62</span>
+            <button class="btn btn-outline btn-sm" onclick="App.shuffleFlashcards()"><span data-i18n="btn_shuffle">Trộn Thẻ</span></button>
+          </div>
+        </div>
+
+        <!-- Filter controls -->
+        <div class="fc-filters-row">
+          <select id="fc-chapter-select" class="fc-chapter-select" onchange="App.filterFlashcardsByChapter(this.value)">
+            <option value="all" data-i18n="opt_all_chapters">Tất Cả Các Chương (All Chapters)</option>
+            <option value="chap-01">Chương 1: Tổng quan ERP & Vận tải Tuyến tính</option>
+            <option value="chap-02">Chương 2: Biến thể Vận tải & Tuyến cấm</option>
+            <option value="chap-03">Chương 3: Trung chuyển & Phân công Nhị phân</option>
+            <option value="chap-04">Chương 4: Quản trị Tồn kho & EOQ Cơ bản</option>
+            <option value="chap-05">Chương 5: Biến thể EOQ: Thiếu hàng, Chiết khấu & EPQ</option>
+            <option value="chap-06">Chương 6: Tích hợp Quy trình ERP (O2C & P2P)</option>
+          </select>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+            <button class="btn btn-outline btn-sm active" id="fc-filter-all" onclick="App.filterFlashcardsCategory('all')"><span data-i18n="fc_filter_all">Tất Cả Loại</span></button>
+            <button class="btn btn-outline btn-sm" id="fc-filter-formula" onclick="App.filterFlashcardsCategory('Formula')"><span data-i18n="fc_filter_formulas">Công Thức</span></button>
+            <button class="btn btn-outline btn-sm" id="fc-filter-rule" onclick="App.filterFlashcardsCategory('Business Rule')"><span data-i18n="fc_filter_rules">Quy Tắc ERP</span></button>
+            <button class="btn btn-outline btn-sm" id="fc-filter-model" onclick="App.filterFlashcardsCategory('Model')"><span>Mô Hình</span></button>
+            <button class="btn btn-outline btn-sm" id="fc-filter-ba" onclick="App.filterFlashcardsCategory('BA Perspective')"><span>Góc Nhìn BA</span></button>
+          </div>
+
+          <div style="display: flex; gap: 0.4rem; margin-left: auto;">
+            <button class="btn btn-outline btn-sm" id="fc-filter-unmastered" onclick="App.filterFlashcardsStatus('unmastered')"><span data-i18n="fc_filter_needs_review">Cần Ôn Lại</span></button>
+            <button class="btn btn-outline btn-sm" id="fc-filter-mastered" onclick="App.filterFlashcardsStatus('mastered')"><span>✓ Đã Thuộc</span></button>
+          </div>
+        </div>
+
+        <div class="flashcards-container">
+          <div class="flashcard-wrapper" onclick="App.flipFlashcard()">
+            <div class="flashcard-inner" id="flashcard-card-element">
+              <!-- Front -->
+              <div class="flashcard-face flashcard-front">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="flashcard-category" id="fc-front-category">ĐỊNH NGHĨA CỐT LÕI</span>
+                  <div style="display: flex; gap: 0.4rem; align-items: center;">
+                    <span class="badge badge-beige" id="fc-front-chapter">Chương 1</span>
+                    <span class="badge badge-rose" id="fc-front-difficulty">Cơ bản</span>
+                  </div>
+                </div>
+                <div class="flashcard-topic-tag" id="fc-front-topic">Tổng quan ERP</div>
+                <div class="flashcard-prompt" id="fc-front-prompt">
+                  Câu hỏi đang được nạp...
+                </div>
+                <div class="flashcard-keywords" id="fc-front-keywords">
+                  <!-- Keywords tags -->
+                </div>
+                <div class="flashcard-hint" data-i18n="fc_hint_flip">
+                  Nhấn chuột vào thẻ hoặc bấm phím Cách (Spacebar) để lật xem đáp án
+                </div>
+              </div>
+              <!-- Back -->
+              <div class="flashcard-face flashcard-back">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="flashcard-category" id="fc-back-category">GIẢI NGHĨA & HÀM Ý ERP</span>
+                  <span class="badge badge-rose" id="fc-back-status">Cần ôn tập</span>
+                </div>
+                <div class="flashcard-topic-tag" id="fc-back-topic">Tổng quan ERP</div>
+                <div class="flashcard-answer" id="fc-back-answer">
+                  Nội dung chi tiết của thẻ ghi nhớ...
+                </div>
+                <div class="flashcard-example-box" id="fc-back-example">
+                  <!-- Practical example note -->
+                </div>
+                <div class="flashcard-hint" data-i18n="fc_hint_back">
+                  Nhấn lần nữa để lật lại mặt trước
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <div class="flashcard-controls">
+            <button class="btn btn-outline" onclick="App.prevFlashcard()">← <span data-i18n="btn_prev_card">Thẻ Trước</span></button>
+            <button class="btn btn-outline" style="border-color: var(--danger); color: var(--danger);" onclick="App.markFlashcardNeedsReview()"><span data-i18n="btn_needs_review">Cần Ôn Lại</span></button>
+            <button class="btn btn-primary" style="background-color: var(--success);" onclick="App.markFlashcardMastered()">✓ <span data-i18n="btn_mastered">Đã Thuộc</span></button>
+            <button class="btn btn-outline" onclick="App.nextFlashcard()"><span data-i18n="btn_next_card">Thẻ Kế Tiếp</span> →</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= VIEW: GLOSSARY ================= -->
+      <section id="view-glossary" class="view-section">
+        <div class="page-header">
+          <div>
+            <span class="badge badge-rose" data-i18n="badge_glossary">Từ Điển Thuật Ngữ</span>
+            <h1 data-i18n="glossary_title">Từ Điển Thuật Ngữ Chuyên Ngành ERP & SCM</h1>
+            <p style="color: var(--muted-mauve); font-size: 0.92rem;" data-i18n="glossary_sub">40 thuật ngữ chuẩn mực song ngữ Anh - Việt kèm ví dụ doanh nghiệp thực tế và liên kết bảng dữ liệu SAP / Oracle</p>
+          </div>
+        </div>
+
+        <div class="glossary-controls">
+          <input type="text" id="glossary-search" class="search-input" placeholder="Tìm kiếm thuật ngữ, từ viết tắt, định nghĩa..." oninput="App.filterGlossary()">
+          <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;" id="glossary-category-pills">
+            <button class="btn btn-outline btn-sm active" data-cat="all" onclick="App.setGlossaryCategory('all')"><span data-i18n="cat_all">Tất cả</span></button>
+            <button class="btn btn-outline btn-sm" data-cat="Architecture" onclick="App.setGlossaryCategory('Architecture')"><span data-i18n="cat_arch">Kiến trúc ERP</span></button>
+            <button class="btn btn-outline btn-sm" data-cat="Inventory" onclick="App.setGlossaryCategory('Inventory')"><span data-i18n="cat_inv">Tồn kho & Mua hàng</span></button>
+            <button class="btn btn-outline btn-sm" data-cat="Transportation" onclick="App.setGlossaryCategory('Transportation')"><span data-i18n="cat_trans">Vận tải & Logistics</span></button>
+            <button class="btn btn-outline btn-sm" data-cat="Production" onclick="App.setGlossaryCategory('Production')"><span data-i18n="cat_prod">Sản xuất</span></button>
+            <button class="btn btn-outline btn-sm" data-cat="Financials" onclick="App.setGlossaryCategory('Financials')"><span data-i18n="cat_fin">Tài chính kế toán</span></button>
+          </div>
+        </div>
+
+        <!-- A-Z Alphabet Bar -->
+        <div class="alphabet-bar" id="glossary-alpha-bar">
+          <!-- Dynamically populated letters -->
+        </div>
+
+        <div class="glossary-grid" id="glossary-cards-container">
+          <!-- 40 cards populated here -->
+        </div>
+      </section>
+
+      <!-- ================= VIEW: CASE STUDIES ================= -->
+      <section id="view-cases" class="view-section">
+        <div class="page-header">
+          <div>
+            <span class="badge badge-rose" data-i18n="badge_case_studies">Nghiên Cứu Tình Huống</span>
+            <h1 data-i18n="cases_title">Thư Viện 4 Tình Huống Doanh Nghiệp Kinh Điển</h1>
+            <p style="color: var(--muted-mauve); font-size: 0.92rem;" data-i18n="cases_sub">Bản gốc tiếng Anh đầy đủ không lược bớt + Bản dịch học thuật tiếng Việt + Phân tích BA + Bộ công cụ tính toán tương tác</p>
+          </div>
+        </div>
+
+        <!-- 4 Case Switcher Cards -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+          <div class="app-card" id="case-card-btn-CASE-01" style="cursor: pointer;" onclick="App.selectCaseStudy('CASE-01')">
+            <span class="badge badge-rose">Case 01</span>
+            <h3 style="font-size: 1.05rem; margin: 0.4rem 0;">Texago Corp.</h3>
+            <p style="font-size: 0.8rem; color: var(--muted-mauve); margin-bottom: 0;" data-i18n="case1_short_desc">Lựa chọn vị trí nhà máy lọc dầu tối ưu 2 tầng</p>
+          </div>
+          <div class="app-card" id="case-card-btn-CASE-02" style="cursor: pointer;" onclick="App.selectCaseStudy('CASE-02')">
+            <span class="badge badge-beige">Case 02</span>
+            <h3 style="font-size: 1.05rem; margin: 0.4rem 0;">Better Products</h3>
+            <p style="font-size: 0.8rem; color: var(--muted-mauve); margin-bottom: 0;" data-i18n="case2_short_desc">Phân bổ 4 sản phẩm & Ràng buộc không chia nhỏ</p>
+          </div>
+          <div class="app-card" id="case-card-btn-CASE-03" style="cursor: pointer;" onclick="App.selectCaseStudy('CASE-03')">
+            <span class="badge badge-rose">Case 03</span>
+            <h3 style="font-size: 1.05rem; margin: 0.4rem 0;">Atlantic Coast Tire</h3>
+            <p style="font-size: 0.8rem; color: var(--muted-mauve); margin-bottom: 0;" data-i18n="case3_short_desc">Quản trị tồn kho EOQ, thiếu hàng & chiết khấu giá</p>
+          </div>
+          <div class="app-card" id="case-card-btn-CASE-04" style="cursor: pointer;" onclick="App.selectCaseStudy('CASE-04')">
+            <span class="badge badge-beige">Case 04</span>
+            <h3 style="font-size: 1.05rem; margin: 0.4rem 0;">SOCA Problem</h3>
+            <p style="font-size: 0.8rem; color: var(--muted-mauve); margin-bottom: 0;" data-i18n="case4_short_desc">Sản xuất bổ sung dần (EPQ) cụm loa tivi</p>
+          </div>
+        </div>
+
+        <!-- Case Detail Shell -->
+        <div class="app-card">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; flex-wrap: wrap; gap: 0.8rem;">
+            <div>
+              <span class="badge badge-rose" id="active-case-tag">Case 01</span>
+              <h2 style="font-size: 1.4rem; margin-top: 0.3rem;" id="active-case-title">The Texago Corp. Site Selection Problem</h2>
+              <div style="font-size: 0.88rem; color: var(--muted-mauve); margin-top: 0.2rem;" id="active-case-industry">Industry: Petroleum Refining</div>
+            </div>
+            <div style="text-align: right;">
+              <span class="badge badge-beige" id="active-case-model">Mô hình Vận tải Tuyến tính 2 Tầng</span>
+            </div>
+          </div>
+
+          <!-- Tabs -->
+          <div class="tab-nav">
+            <button class="tab-btn active" id="case-tab-btn-doc" onclick="App.setCaseSubTab('doc')"><span data-i18n="tab_full_analysis">Nội Dung Đầy Đủ & Phân Tích BA</span></button>
+            <button class="tab-btn" id="case-tab-btn-solver" onclick="App.setCaseSubTab('solver')"><span data-i18n="tab_interactive_calc">Bộ Tính Toán Mô Phỏng Tương Tác</span></button>
+          </div>
+
+          <!-- Tab Content 1: Full Document Markdown -->
+          <div id="case-subtab-doc" class="chapter-article" style="padding: 1.5rem 0;">
+            <!-- Rendered case markdown -->
+          </div>
+
+          <!-- Tab Content 2: Interactive Solver -->
+          <div id="case-subtab-solver" class="solver-container" style="display: none;">
+            <div id="case-solver-dynamic-content">
+              <!-- Dynamically populated solver based on current case -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= VIEW: AI STUDY CONSULTANT ================= -->
+      <section id="view-consultant" class="view-section">
+        <div class="page-header">
+          <div>
+            <span class="badge badge-rose" data-i18n="badge_ai_mentor">Trợ Lý Học Tập Thông Minh</span>
+            <h1 data-i18n="ai_title">Cố Vấn Tri Thức ERP & Chuỗi Cung Ứng AI</h1>
+            <p style="color: var(--muted-mauve); font-size: 0.92rem;" data-i18n="ai_sub">Một không gian hội thoại hợp nhất kết hợp tri thức 6 chương giáo trình, 4 case studies kinh điển và 250 câu hỏi trắc nghiệm.</p>
+          </div>
+          <div style="display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap;">
+            <button class="btn btn-outline btn-sm" onclick="App.confirmClearChat()"><span data-i18n="btn_clear_chat">Xóa Hội Thoại</span></button>
+            <button class="btn btn-outline btn-sm" onclick="App.openApiKeyModal()"><span data-i18n="btn_api_settings">Cấu hình API Key (Tùy chọn)</span></button>
+          </div>
+        </div>
+
+        <div class="unified-chat-layout">
+          <!-- Chat Header Bar -->
+          <div class="unified-chat-header">
+            <div style="display: flex; align-items: center; gap: 0.8rem;">
+              <div class="brand-icon" style="width: 34px; height: 34px; font-size: 1rem;">AI</div>
+              <div>
+                <strong style="font-size: 1rem; color: var(--coffee-bean);">Hội Thoại Trợ Lý Tri Thức ERP & SCM</strong>
+                <div style="font-size: 0.78rem; color: var(--muted-mauve);">Học liệu tham chiếu giáo trình UEH 2020 & 4 Case Studies</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.6rem;">
+              <span id="chat-mode-badge" class="badge badge-beige">Chế độ Tri thức Offline (Grounded Mode)</span>
+            </div>
+          </div>
+
+          <!-- Context Selector Bar -->
+          <div class="unified-chat-context-bar">
+            <span style="font-weight: 600; color: var(--coffee-bean);" data-i18n="consultant_context_label">Ngữ cảnh tham vấn:</span>
+            <label style="display: flex; align-items: center; gap: 0.3rem;">
+              <span>Chương:</span>
+              <select id="chat-context-chapter" class="chat-context-select" onchange="App.setChatContextChapter(this.value)">
+                <option value="all">Tất cả 6 chương học</option>
+                <option value="chap-01">Chương 1: Tổng quan ERP & Vận tải Tuyến tính</option>
+                <option value="chap-02">Chương 2: Biến thể Vận tải & Ràng buộc</option>
+                <option value="chap-03">Chương 3: Trung chuyển & Phân công Nhị phân</option>
+                <option value="chap-04">Chương 4: Quản trị Tồn kho & EOQ Cơ bản</option>
+                <option value="chap-05">Chương 5: Biến thể EOQ: Thiếu hàng, Chiết khấu & EPQ</option>
+                <option value="chap-06">Chương 6: Tích hợp Quy trình ERP (O2C & P2P)</option>
+              </select>
+            </label>
+            <label style="display: flex; align-items: center; gap: 0.3rem;">
+              <span>Tình huống:</span>
+              <select id="chat-context-case" class="chat-context-select" onchange="App.setChatContextCase(this.value)">
+                <option value="none">Không chọn tình huống cụ thể</option>
+                <option value="CASE-01">Case 1: Texago Corp. (Chọn địa điểm lọc dầu)</option>
+                <option value="CASE-02">Case 2: Better Products (Phân công nhà máy)</option>
+                <option value="CASE-03">Case 3: Atlantic Coast Tire (Quản trị tồn kho EOQ)</option>
+                <option value="CASE-04">Case 4: SOCA (Sản xuất bổ sung dần EPQ)</option>
+              </select>
+            </label>
+          </div>
+
+          <!-- Messages Container -->
+          <div class="unified-chat-messages" id="chat-messages-container">
+            <!-- Messages rendered dynamically -->
+          </div>
+
+          <!-- Predefined Scenario Chips Bar -->
+          <div class="unified-chat-suggestions">
+            <div style="font-size: 0.76rem; font-weight: 700; color: var(--muted-mauve); margin-bottom: 0.4rem; text-transform: uppercase;">
+              Chọn mẫu kịch bản để đưa prompt vào ô soạn thảo:
+            </div>
+            <div class="suggestions-scroll-row" id="scenario-chips-container">
+              <!-- Suggestion prompt chips rendered dynamically -->
+            </div>
+          </div>
+
+          <!-- Input Area -->
+          <div class="unified-chat-input-area">
+            <textarea id="chat-user-input" class="chat-textarea" placeholder="Nhập câu hỏi thảo luận hoặc nhấp chọn một gợi ý phía trên (Nhấn Enter để gửi, Shift+Enter để xuống dòng)..." onkeydown="App.handleChatKeyDown(event)"></textarea>
+            <button class="btn btn-primary" id="chat-send-btn" onclick="App.sendChatMessage()" style="height: 48px; padding: 0 1.5rem; display: flex; align-items: center; gap: 0.4rem;">
+              <span data-i18n="btn_send">Gửi</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= VIEW: ABOUT ================= -->
+      <section id="view-about" class="view-section">
+        <div class="page-header">
+          <div>
+            <span class="badge badge-rose" data-i18n="badge_about">Thông Tin Nền Tảng</span>
+            <h1 data-i18n="about_title">Về ERP & Supply Chain Management Knowledge Hub</h1>
+            <p style="color: var(--muted-mauve); font-size: 0.92rem;" data-i18n="about_sub">Nền tảng học tập & phân tích chuyên sâu chuẩn mực dành cho sinh viên, giảng viên và Business Analyst</p>
+          </div>
+        </div>
+
+        <div class="app-card" style="margin-bottom: 2rem;">
+          <h2 style="font-size: 1.35rem; margin-bottom: 1rem; color: var(--coffee-bean);" data-i18n="about_mission_title">Sứ Mệnh Học Thuật & Định Hướng Nghề Nghiệp</h2>
+          <p style="line-height: 1.7; color: var(--text-main);" data-i18n="about_mission_p1">
+            ERP & SCM Knowledge Hub được xây dựng nhằm giải quyết khoảng cách giữa lý thuyết sách vở và thực tiễn triển khai các hệ sinh thái doanh nghiệp lớn (SAP S/4HANA, Oracle Cloud SCM). Thay vì chỉ tóm tắt tài liệu rời rạc, nền tảng kết hợp chặt chẽ giữa <strong>Nghiên cứu Vận hành (Operations Research)</strong>, <strong>Khoa học Quản lý (Management Science)</strong> và <strong>Kỹ năng Phân tích Nghiệp vụ (Business Analysis)</strong>.
+          </p>
+          <p style="line-height: 1.7; color: var(--text-main);" data-i18n="about_mission_p2">
+            Học liệu tham chiếu cốt lõi bắt nguồn từ chương trình đào tạo chính quy <em>Enterprise Resource Planning (ERP) Applied to Logistics & Supply Chain Management</em> (UEH 2020) của tác giả Y Hoang, tích hợp cùng 4 bộ tình huống thực tế kinh điển: Texago Corp. (Lựa chọn địa điểm lọc dầu 2 tầng), Better Products Company (Phân bổ sản phẩm & phân công nguyên khối 0-1), Atlantic Coast Tire Corp. (Quản trị tồn kho khoa học EOQ & chiết khấu giá), và SOCA TV (Sản xuất bổ sung dần EPQ).
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+          <div class="app-card">
+            <span class="badge badge-rose" style="margin-bottom: 0.6rem;">Tri Tri thức Số Hóa</span>
+            <h3 style="font-size: 1.15rem; margin-bottom: 0.6rem;">Cấu Trúc 12 Mục Sư Phạm</h3>
+            <p style="font-size: 0.88rem; color: var(--muted-mauve); line-height: 1.6;">
+              Mỗi chương học bao gồm đầy đủ: Tổng quan, Khái niệm cốt lõi, Thuật ngữ, Mô hình toán học, Quy trình nghiệp vụ, Minh họa trực quan, Ví dụ doanh nghiệp, Ứng dụng ERP (SAP transaction/tables), Góc nhìn BA (FR/NFR/RACI/UAT), Phân tích phản biện, Tóm tắt và Bài kiểm tra nhanh.
+            </p>
+          </div>
+          <div class="app-card">
+            <span class="badge badge-beige" style="margin-bottom: 0.6rem;">Đánh Giá Năng Lực</span>
+            <h3 style="font-size: 1.15rem; margin-bottom: 0.6rem;">250 Câu Hỏi Trắc Nghiệm</h3>
+            <p style="font-size: 0.88rem; color: var(--muted-mauve); line-height: 1.6;">
+              10 đề thi chuẩn mực với tỷ lệ 40% Cơ bản, 40% Trung bình và 20% Nâng cao. Hỗ trợ 2 chế độ: Luyện tập (xem đáp án và giải thích chi tiết ngay) và Thi tính giờ 30 phút (đồng hồ đếm ngược, bảng câu hỏi, tự động nộp bài và chấm điểm).
+            </p>
+          </div>
+          <div class="app-card">
+            <span class="badge badge-info" style="margin-bottom: 0.6rem;">Kiến Trúc Kỹ Thuật</span>
+            <h3 style="font-size: 1.15rem; margin-bottom: 0.6rem;">Độc Lập & Tự Chứa 100%</h3>
+            <p style="font-size: 0.88rem; color: var(--muted-mauve); line-height: 1.6;">
+              Được thiết kế theo kiến trúc Zero-Build, gói gọn toàn bộ dữ liệu trong tệp <code>data.js</code> giúp ứng dụng mở và hoạt động trơn tru trên mọi trình duyệt Chromium (Edge, Chrome) khi nhấp đúp tệp <code>index.html</code> trực tiếp.
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Modals -->
+
+    <!-- Submit Exam Modal -->
+    <div id="modal-submit-exam" class="modal-overlay">
+      <div class="modal-card">
+        <h3 style="font-size: 1.3rem; margin-bottom: 0.8rem;" data-i18n="modal_submit_title">Xác Nhận Nộp Bài Thi</h3>
+        <p style="color: var(--muted-mauve); margin-bottom: 1.5rem;" id="modal-submit-stats-text">
+          Bạn đã hoàn thành 23/25 câu hỏi. Vẫn còn 2 câu chưa trả lời. Bạn có chắc chắn muốn nộp bài ngay bây giờ?
+        </p>
+        <div style="display: flex; justify-content: flex-end; gap: 0.8rem;">
+          <button class="btn btn-outline" id="btn-cancel-submit-exam" onclick="App.closeSubmitConfirmationModal()"><span data-i18n="btn_continue_exam">Làm Tiếp</span></button>
+          <button class="btn btn-primary" id="btn-confirm-submit-exam" onclick="App.confirmSubmitExam()"><span data-i18n="btn_confirm_submit">Xác Nhận Nộp Bài</span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Exit Exam Confirmation Modal -->
+    <div id="modal-exit-exam" class="modal-overlay">
+      <div class="modal-card">
+        <h3 style="font-size: 1.3rem; margin-bottom: 0.8rem; color: var(--danger);" id="modal-exit-title" data-i18n="modal_exit_title">Thoát bài thi?</h3>
+        <p style="color: var(--text-main); margin-bottom: 1.5rem; line-height: 1.6;" id="modal-exit-body" data-i18n="modal_exit_body">
+          Nếu thoát ngay bây giờ, toàn bộ câu trả lời đã nhập trong lượt thi hiện tại sẽ bị xóa. Bạn sẽ không thể khôi phục tiến độ của lượt thi này.<br/><br/>
+          Bạn có chắc chắn muốn thoát không?
+        </p>
+        <div style="display: flex; justify-content: flex-end; gap: 0.8rem;">
+          <button class="btn btn-outline" id="btn-cancel-exit-exam" onclick="App.closeExitConfirmationModal()"><span data-i18n="btn_continue_exam">Tiếp tục làm bài</span></button>
+          <button class="btn btn-primary" id="btn-confirm-exit-exam" style="background-color: var(--danger); border-color: var(--danger);" onclick="App.confirmExitExam()"><span data-i18n="btn_confirm_exit">Thoát và xóa bài thi</span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Glossary Detail Modal -->
+    <div id="modal-glossary-detail" class="modal-overlay">
+      <div class="modal-card">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.8rem;">
+          <div>
+            <span class="badge badge-rose" id="modal-gl-cat">Kiến trúc ERP</span>
+            <h2 style="font-size: 1.4rem; margin-top: 0.4rem;" id="modal-gl-term">Single Source of Truth</h2>
+            <div style="font-size: 0.9rem; color: var(--muted-mauve);" id="modal-gl-en">Nguồn chân lý duy nhất</div>
+          </div>
+          <button class="btn btn-outline btn-sm" onclick="App.closeGlossaryModal()">✕</button>
+        </div>
+        <div style="line-height: 1.6; font-size: 0.95rem;">
+          <div style="margin-bottom: 1.2rem;">
+            <strong style="color: var(--coffee-bean); display: block; margin-bottom: 0.3rem;" data-i18n="gl_modal_def">Định nghĩa chuyên ngành:</strong>
+            <p id="modal-gl-def" style="color: var(--text-main);"></p>
+          </div>
+          <div style="margin-bottom: 1.2rem; background: var(--bg-subtle); padding: 1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--dusty-rose);">
+            <strong style="color: var(--coffee-bean); display: block; margin-bottom: 0.3rem;" data-i18n="gl_modal_ex">Ví dụ thực tế doanh nghiệp:</strong>
+            <p id="modal-gl-example" style="margin-bottom: 0; font-size: 0.9rem;"></p>
+          </div>
+          <div style="margin-bottom: 1.2rem;">
+            <strong style="color: var(--coffee-bean); display: block; margin-bottom: 0.3rem;" data-i18n="gl_modal_erp">Ánh xạ phân hệ ERP (SAP / Oracle):</strong>
+            <code id="modal-gl-erp" style="display: block; padding: 0.6rem; background: var(--warm-beige); border-radius: 4px; font-family: var(--font-mono); font-size: 0.88rem;"></code>
+          </div>
+          <div>
+            <strong style="color: var(--coffee-bean); display: block; margin-bottom: 0.4rem;" data-i18n="gl_modal_related">Thuật ngữ liên quan:</strong>
+            <div id="modal-gl-related" style="display: flex; gap: 0.4rem; flex-wrap: wrap;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- API Key Settings Modal -->
+    <div id="modal-api-settings" class="modal-overlay">
+      <div class="modal-card">
+        <h3 style="font-size: 1.25rem; margin-bottom: 0.8rem;" data-i18n="modal_api_title">Cấu Hình Khóa API Cho Cố Vấn AI</h3>
+        <p style="font-size: 0.88rem; color: var(--muted-mauve); margin-bottom: 1.2rem;" data-i18n="modal_api_desc">
+          Mặc định nền tảng đã tích hợp sẵn động cơ tri thức thông minh chạy offline dựa trên dữ liệu giáo trình. Nếu muốn trò chuyện tự do với các mô hình LLM lớn bên ngoài (Google Gemini API hoặc OpenAI), bạn có thể nhập khóa API tại đây. Khóa này chỉ được lưu tạm thời trên trình duyệt của bạn (Local Session) và tuyệt đối không gửi về máy chủ bên ngoài.
+        </p>
+        <div class="input-group">
+          <label>Provider:</label>
+          <select id="api-provider-select" class="input-field">
+            <option value="gemini">Google Gemini API (gemini-1.5-flash / pro)</option>
+            <option value="openai">OpenAI API (gpt-4o-mini)</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label>API Key:</label>
+          <input type="password" id="api-key-input" class="input-field" placeholder="AIzaSy... / sk-...">
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 0.8rem; margin-top: 1.5rem;">
+          <button class="btn btn-outline" onclick="App.closeApiKeyModal()"><span data-i18n="btn_cancel">Đóng</span></button>
+          <button class="btn btn-primary" onclick="App.saveApiKey()"><span data-i18n="btn_save_key">Lưu Cấu Hình</span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <div class="footer-container">
+        <h4 class="footer-heading">ERP & Supply Chain Management Knowledge Hub</h4>
+        <p class="footer-tagline-text" data-i18n="footer_tagline">ERP & SCM Knowledge Hub | Nền tảng học tập tri thức giáo dục độc lập.</p>
+        <div class="footer-divider"></div>
+        <p class="footer-author-box" data-i18n="footer_author">Tác giả: Nguyễn Đăng Cẩm Tú (Hazel)</p>
+        <p class="footer-academic-note" data-i18n="footer_academic_note">Nền tảng song ngữ (Việt / Anh) • Chuẩn hóa theo giáo trình UEH 2020 & Khung năng lực Business Analyst.</p>
+      </div>
+    </footer>
+    <!-- Floating Scroll-To-Top Button -->
+    <button id="scroll-to-top-btn" class="scroll-to-top-btn" onclick="App.scrollToTop()" title="Lên đầu trang / Scroll to top" aria-label="Scroll to top">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 15l-6-6-6 6"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Load Embedded Datasets First -->
+  <script src="data.js"></script>
+  <!-- Load Application Logic -->
+  <script src="app.js"></script>
+</body>
+</html>

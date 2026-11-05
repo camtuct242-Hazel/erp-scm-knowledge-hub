@@ -1,0 +1,614 @@
+[
+  {
+    "id": "GLOS-001",
+    "term_en": "Enterprise Resource Planning (ERP)",
+    "term_vi": "Hệ thống hoạch định nguồn lực doanh nghiệp",
+    "domain": "ERP Systems",
+    "chapter": "chap-01",
+    "definition_en": "An integrated suite of business applications that automates and connects core operational processes across procurement, manufacturing, inventory, sales, finance, and human resources.",
+    "definition_vi": "Bộ ứng dụng nghiệp vụ tích hợp giúp tự động hóa và kết nối các quy trình vận hành cốt lõi từ mua hàng, sản xuất, kho vận, bán hàng, tài chính đến nhân sự trên một cơ sở dữ liệu duy nhất.",
+    "detailed_explanation_vi": "ERP là xương sống kỹ thuật số của doanh nghiệp hiện đại. Nó loại bỏ các đảo thông tin (information silos), đồng bộ hóa dữ liệu thời gian thực giữa các phòng ban, giúp nhà quản lý ra quyết định chuẩn xác và kiểm soát toàn diện luồng vật tư, tài chính và đơn hàng.",
+    "practical_example": "Khi nhân viên kinh doanh nhập đơn hàng bán (Sales Order) trong module SD của SAP S/4HANA, hệ thống tự động kiểm tra tồn kho sẵn có (ATP Check), sinh kế hoạch nhu cầu nguyên vật liệu (MRP) trong module PP, và cập nhật dự báo doanh thu trong module FICO.",
+    "related_terms": [
+      "GLOS-002",
+      "GLOS-003",
+      "GLOS-004"
+    ]
+  },
+  {
+    "id": "GLOS-002",
+    "term_en": "Supply Chain Management (SCM)",
+    "term_vi": "Quản trị chuỗi cung ứng",
+    "domain": "ERP Systems",
+    "chapter": "chap-01",
+    "definition_en": "The management of the upstream and downstream flows of materials, information, and finances across suppliers, manufacturers, wholesalers, distributors, and end customers.",
+    "definition_vi": "Quá trình quản lý và tối ưu hóa các luồng nguyên vật liệu, thông tin và dòng tiền hai chiều giữa nhà cung cấp, nhà sản xuất, nhà bán buôn, trung tâm phân phối và khách hàng cuối cùng.",
+    "detailed_explanation_vi": "SCM kết nối các quy trình nội bộ của doanh nghiệp với các đối tác bên ngoài nhằm tối đa hóa giá trị tổng thể cho toàn chuỗi và giảm thiểu chi phí lãng phí trên từng mắt xích vận chuyển, lưu kho.",
+    "practical_example": "Chuỗi cung ứng của Texago quản lý việc khai thác dầu từ các mỏ tại Texas, vận chuyển bằng tàu biển và đường ống đến các nhà máy lọc dầu, và phân phối sản phẩm xăng dầu thành phẩm tới 4 trung tâm phân phối khu vực.",
+    "related_terms": [
+      "GLOS-001",
+      "GLOS-005",
+      "GLOS-020"
+    ]
+  },
+  {
+    "id": "GLOS-003",
+    "term_en": "Information Silos",
+    "term_vi": "Đảo thông tin / Dữ liệu cô lập",
+    "domain": "ERP Systems",
+    "chapter": "chap-01",
+    "definition_en": "Isolated data repositories or legacy systems within an enterprise that do not communicate or synchronize with other departments.",
+    "definition_vi": "Tình trạng các phòng ban trong doanh nghiệp lưu trữ và xử lý dữ liệu trên các phần mềm hoặc file riêng lẻ, không thể chia sẻ hoặc đồng bộ hóa tự động với các bộ phận khác.",
+    "detailed_explanation_vi": "Đảo thông tin dẫn đến trùng lặp dữ liệu, sai lệch số liệu tồn kho, chậm trễ phản hồi đơn hàng và mâu thuẫn giữa kế hoạch mua hàng, sản xuất và bán hàng.",
+    "practical_example": "Trước khi triển khai ERP, bộ phận kho theo dõi tồn vỏ lon đậu bằng sổ tay hoặc file Excel riêng, trong khi bộ phận kế hoạch sản xuất lên lịch đóng hộp mà không biết lượng bao bì thực tế còn thiếu, gây đình trệ dây chuyền.",
+    "related_terms": [
+      "GLOS-001",
+      "GLOS-004"
+    ]
+  },
+  {
+    "id": "GLOS-004",
+    "term_en": "Master Data Management (MDM)",
+    "term_vi": "Quản trị dữ liệu chủ",
+    "domain": "ERP Systems",
+    "chapter": "chap-01",
+    "definition_en": "The core business entities and transactional constants shared across the enterprise, including Material Master, Vendor Master, Customer Master, and Bill of Materials (BOM).",
+    "definition_vi": "Tập hợp các thực thể dữ liệu cốt lõi và ổn định được chia sẻ thống nhất trên toàn hệ thống doanh nghiệp, bao gồm Hồ sơ Vật tư, Hồ sơ Nhà cung cấp, Hồ sơ Khách hàng và Định mức nguyên vật liệu (BOM).",
+    "detailed_explanation_vi": "Dữ liệu chủ chính xác là tiền đề sống còn để chạy các thuật toán tối ưu hóa vận tải và quản trị tồn kho. Một sai sót trong mã vật tư hoặc đơn vị đo lường có thể làm hỏng toàn bộ phép tính EOQ.",
+    "practical_example": "Trong case study ACT, thông số lốp xe kích cỡ 185/70 R13 được cấu hình trong Material Master với mã đơn vị (SKU), đơn giá mua $20, tỷ lệ chi phí tồn trữ 21%/năm, và thời gian giao hàng (Lead Time) 9 ngày làm việc.",
+    "related_terms": [
+      "GLOS-001",
+      "GLOS-025"
+    ]
+  },
+  {
+    "id": "GLOS-005",
+    "term_en": "Linear Programming (LP)",
+    "term_vi": "Quy hoạch tuyến tính",
+    "domain": "Operations Research",
+    "chapter": "chap-01",
+    "definition_en": "A mathematical optimization technique for maximizing or minimizing a linear objective function subject to a set of linear equality and inequality constraints.",
+    "definition_vi": "Kỹ thuật tối ưu hóa toán học nhằm cực đại hóa hoặc cực tiểu hóa một hàm mục tiêu tuyến tính dưới một tập hợp các ràng buộc đẳng thức và bất đẳng thức tuyến tính.",
+    "detailed_explanation_vi": "Bài toán vận tải cổ điển là một dạng đặc biệt của quy hoạch tuyến tính. Mọi biến quyết định, ràng buộc cung cầu và hàm chi phí đều có bậc nhất, đảm bảo tìm được nghiệm tối ưu toàn cục.",
+    "practical_example": "Hàm mục tiêu tuyến tính của P&T Co. cực tiểu hóa tổng chi phí vận tải: Min Z = 464*x11 + 513*x12 + ... + 685*x34 với 3 ràng buộc công suất nhà máy và 4 ràng buộc nhu cầu kho.",
+    "related_terms": [
+      "GLOS-006",
+      "GLOS-007",
+      "GLOS-008"
+    ]
+  },
+  {
+    "id": "GLOS-006",
+    "term_en": "Transportation Problem",
+    "term_vi": "Bài toán vận tải",
+    "domain": "Transportation",
+    "chapter": "chap-01",
+    "definition_en": "A special class of linear programming problems dealing with the optimal distribution of a single commodity from several supply origins to several demand destinations at minimum cost.",
+    "definition_vi": "Một dạng đặc biệt của bài toán quy hoạch tuyến tính giải quyết việc phân phối tối ưu một loại hàng hóa từ nhiều điểm nguồn (cung) đến nhiều điểm đích (cầu) với tổng chi phí vận chuyển thấp nhất.",
+    "detailed_explanation_vi": "Mô hình có cấu trúc ma trận đặc trưng với các biến quyết định x_ij đại diện cho khối lượng chuyển từ nguồn i đến đích j. Mỗi nguồn có năng lực cung cố định và mỗi đích có nhu cầu cố định.",
+    "practical_example": "Bài toán công ty P&T xác định số xe tải chở đậu hộp cần gửi từ 3 nhà máy đóng hộp (Bellingham, Eugene, Albert Lea) đến 4 kho hàng khu vực để thỏa mãn tổng nhu cầu 300 xe tải với chi phí chỉ $152,535.",
+    "related_terms": [
+      "GLOS-005",
+      "GLOS-007",
+      "GLOS-008",
+      "GLOS-009"
+    ]
+  },
+  {
+    "id": "GLOS-007",
+    "term_en": "Requirements Assumption",
+    "term_vi": "Giả định về nhu cầu và cung ứng",
+    "domain": "Transportation",
+    "chapter": "chap-01",
+    "definition_en": "The foundational assumption that every supply origin has a fixed, known supply that must be completely distributed, and every demand destination has a fixed, known demand that must be completely satisfied.",
+    "definition_vi": "Giả định nền tảng cho rằng mỗi điểm nguồn có lượng cung cố định phải được xuất xưởng toàn bộ, và mỗi điểm đích có lượng cầu cố định phải được tiếp nhận đầy đủ.",
+    "detailed_explanation_vi": "Giả định này yêu cầu các phương trình ràng buộc trong mô hình toán học phải được viết dưới dạng đẳng thức (dấu bằng), loại trừ tình trạng dư thừa hàng tại nguồn hoặc thiếu hụt tại đích trong bài toán chuẩn.",
+    "practical_example": "Tại nhà máy Bellingham, đúng 75 xe tải phải được chuyển đi (x11 + x12 + x13 + x14 = 75); tại kho Sacramento, đúng 80 xe tải phải được tiếp nhận (x11 + x21 + x31 = 80).",
+    "related_terms": [
+      "GLOS-006",
+      "GLOS-008"
+    ]
+  },
+  {
+    "id": "GLOS-008",
+    "term_en": "Feasible Solutions Property",
+    "term_vi": "Tính chất nghiệm khả thi của bài toán vận tải",
+    "domain": "Transportation",
+    "chapter": "chap-01",
+    "definition_en": "A transportation problem has feasible solutions if and only if the total supply available across all origins equals the total demand required across all destinations.",
+    "definition_vi": "Bài toán vận tải chỉ có nghiệm khả thi khi và chỉ khi tổng lượng cung cấp từ tất cả các nguồn bằng đúng tổng lượng nhu cầu của tất cả các điểm đích (Tổng Cung = Tổng Cầu).",
+    "detailed_explanation_vi": "Nếu tổng cung khác tổng cầu, mô hình toán học sẽ mâu thuẫn và không thể có nghiệm thỏa mãn đồng thời tất cả các ràng buộc dấu bằng. Khi đó bắt buộc phải chuyển đổi bằng cách thêm biến giả định.",
+    "practical_example": "Tại P&T Co., tổng cung = 75 + 125 + 100 = 300 xe tải; tổng cầu = 80 + 65 + 70 + 85 = 300 xe tải. Do tổng cung = tổng cầu nên bài toán thỏa mãn tính chất nghiệm khả thi.",
+    "related_terms": [
+      "GLOS-006",
+      "GLOS-007",
+      "GLOS-011"
+    ]
+  },
+  {
+    "id": "GLOS-009",
+    "term_en": "Transportation Simplex Method",
+    "term_vi": "Phương pháp đơn hình vận tải",
+    "domain": "Operations Research",
+    "chapter": "chap-01",
+    "definition_en": "A specialized, streamlined adaptation of the general simplex algorithm specifically designed to exploit the triangular basis structure of transportation tableaus.",
+    "definition_vi": "Biến thể chuyên biệt, tinh gọn của thuật toán đơn hình tổng quát, được tối ưu hóa riêng để khai thác cấu trúc ma trận vận tải mà không cần nghịch đảo ma trận kích thước lớn.",
+    "detailed_explanation_vi": "Thuật toán sử dụng các bước tìm phương án xuất phát (Tây Bắc, Chi phí nhỏ nhất, Vogel), đánh giá ô chọn bằng hệ số thế vị (u_i + v_j = c_ij), và xoay vòng điều chỉnh lượng hàng bằng chu trình stepping-stone.",
+    "practical_example": "Excel Solver áp dụng thuật toán đơn hình để tính toán phương án phân bổ xe tải cho P&T chỉ trong vài mili-giây, nhanh hơn hàng trăm lần so với thuật toán đơn hình tổng quát.",
+    "related_terms": [
+      "GLOS-005",
+      "GLOS-006",
+      "GLOS-010"
+    ]
+  },
+  {
+    "id": "GLOS-010",
+    "term_en": "Network Simplex Method",
+    "term_vi": "Phương pháp đơn hình mạng lưới",
+    "domain": "Operations Research",
+    "chapter": "chap-03",
+    "definition_en": "A highly efficient graphical implementation of the simplex algorithm tailored for distribution networks, shortest path, and maximum flow problems represented as directed graphs.",
+    "definition_vi": "Thuật toán đơn hình trên đồ thị có hiệu năng cực cao, giải quyết các bài toán mạng lưới phân phối, đường đi ngắn nhất và luồng cực đại dựa trên cấu trúc cây khung (spanning tree).",
+    "detailed_explanation_vi": "Phương pháp này lưu trữ cơ sở đơn hình dưới dạng đồ thị có hướng (nút và cung) thay vì bảng số, cho phép giải quyết các mạng lưới chuỗi cung ứng khổng lồ với hàng trăm ngàn tuyến vận chuyển.",
+    "practical_example": "Trong hệ thống SAP Transportation Management (TM), công cụ tối ưu hóa mạng lưới sử dụng Network Simplex để lên lịch trình vận tải đa phương tiện hàng ngày cho các tập đoàn toàn cầu.",
+    "related_terms": [
+      "GLOS-009",
+      "GLOS-019"
+    ]
+  },
+  {
+    "id": "GLOS-011",
+    "term_en": "Dummy Destination",
+    "term_vi": "Điểm đến giả định / Đích hư cấu",
+    "domain": "Transportation",
+    "chapter": "chap-02",
+    "definition_en": "An artificial receiving node introduced into a transportation tableau when total supply exceeds total demand, assigned a demand equal to the surplus and zero shipping costs.",
+    "definition_vi": "Một điểm tiếp nhận nhân tạo được bổ sung vào mô hình bài toán vận tải khi Tổng Cung > Tổng Cầu, có nhu cầu bằng đúng lượng cung dư thừa và chi phí vận chuyển bằng 0.",
+    "detailed_explanation_vi": "Lượng hàng được phân bổ đến điểm đến giả định đại diện cho công suất dư thừa không được huy động tại các nhà máy nguồn. Chi phí bằng 0 phản ánh việc không tốn phí vận chuyển cho hàng không xuất xưởng.",
+    "practical_example": "Trong case study Metro Water District, tổng lượng nước từ 3 con sông là 16 triệu acre-feet trong khi 4 thành phố chỉ cần 12.5 triệu. Bổ sung một Dummy Destination với nhu cầu 3.5 triệu và chi phí $0 giúp cân bằng bài toán.",
+    "related_terms": [
+      "GLOS-008",
+      "GLOS-012"
+    ]
+  },
+  {
+    "id": "GLOS-012",
+    "term_en": "Dummy Source",
+    "term_vi": "Nguồn giả định / Điểm cung hư cấu",
+    "domain": "Transportation",
+    "chapter": "chap-02",
+    "definition_en": "An artificial supply origin introduced into a transportation tableau when total demand exceeds total supply, possessing capacity equal to the shortage deficit.",
+    "definition_vi": "Một điểm nguồn nhân tạo được thêm vào mô hình khi Tổng Cầu > Tổng Cung, có lượng cung bằng đúng lượng thiếu hụt của thị trường.",
+    "detailed_explanation_vi": "Nếu doanh nghiệp muốn tối thiểu hóa doanh thu bị mất, chi phí từ nguồn giả định đến điểm cầu có thể được đặt bằng lợi nhuận biên bị mất do không thể giao hàng (Lost Profit/Penalty Cost), hoặc đặt bằng 0 nếu mục tiêu chỉ là cân bằng.",
+    "practical_example": "Trong bài toán giao hàng cao điểm Tết, tổng đơn đặt hàng từ các đại lý vượt năng lực sản xuất của 3 xưởng 500 tấn, nguồn giả định được đưa vào để xác định khách hàng nào bắt buộc phải chịu thiếu hàng với tổn thất thấp nhất.",
+    "related_terms": [
+      "GLOS-008",
+      "GLOS-011"
+    ]
+  },
+  {
+    "id": "GLOS-013",
+    "term_en": "Prohibited Route / Big-M Method",
+    "term_vi": "Tuyến đường cấm / Phương pháp số M lớn",
+    "domain": "Transportation",
+    "chapter": "chap-02",
+    "definition_en": "A modeling technique that prevents allocations along an infeasible or prohibited shipping lane by assigning an astronomically large unit penalty cost M to that cell.",
+    "definition_vi": "Kỹ thuật mô hình hóa nhằm ngăn chặn việc phân bổ hàng hóa trên các tuyến đường không khả thi hoặc bị cấm bằng cách gán một hệ số chi phí phạt cực lớn (M) cho ô vận chuyển tương ứng.",
+    "detailed_explanation_vi": "Do thuật toán đơn hình tìm cách cực tiểu hóa tổng chi phí, bất kỳ ô nào có chi phí M sẽ bị thuật toán loại trừ tự động (đưa biến x_ij về 0), trừ khi toàn bộ bài toán không tồn tại nghiệm khả thi khác.",
+    "practical_example": "Trong case Better Products (Case 2.1), Nhà máy 2 không thể sản xuất Sản phẩm 3. Ta gán chi phí c23 = $999,999 (hoặc M), buộc Solver không bao giờ phân bổ Sản phẩm 3 cho Nhà máy 2.",
+    "related_terms": [
+      "GLOS-006",
+      "GLOS-014"
+    ]
+  },
+  {
+    "id": "GLOS-014",
+    "term_en": "Assignment Problem",
+    "term_vi": "Bài toán phân công / Bài toán gán nhiệm vụ",
+    "domain": "Operations Research",
+    "chapter": "chap-03",
+    "definition_en": "A special case of the transportation problem where m assignees are allocated to n tasks on a strict one-to-one basis, modeled with binary decision variables (x_ij in {0, 1}).",
+    "definition_vi": "Trường hợp đặc biệt của bài toán vận tải trong đó m đối tượng phân công (người, máy, nhà máy) được gán cho n nhiệm vụ theo nguyên tắc 1-kèm-1, sử dụng biến nhị phân x_ij thuộc {0, 1}.",
+    "detailed_explanation_vi": "Mỗi nguồn có lượng cung đúng bằng 1 và mỗi đích có nhu cầu đúng bằng 1. Mô hình đảm bảo mỗi công việc có đúng 1 người làm và mỗi người chỉ làm đúng 1 việc để tối ưu hóa thời gian hoặc chi phí.",
+    "practical_example": "Trong Case 2.2 của Better Products Co., cấm chia nhỏ sản phẩm (không product splitting). Mỗi sản phẩm chỉ được sản xuất tại duy nhất 1 nhà máy, trở thành bài toán phân công nhị phân.",
+    "related_terms": [
+      "GLOS-006",
+      "GLOS-015"
+    ]
+  },
+  {
+    "id": "GLOS-015",
+    "term_en": "Hungarian Method (Kuhn-Munkres)",
+    "term_vi": "Phương pháp Hungarian / Thuật toán Kuhn-Munkres",
+    "domain": "Operations Research",
+    "chapter": "chap-03",
+    "definition_en": "A combinatorial optimization algorithm that solves the bipartite matching assignment problem in polynomial time O(n^3) using row and column reductions.",
+    "definition_vi": "Thuật toán tối ưu hóa tổ hợp giải bài toán phân công nhị phân trong thời gian đa thức O(n^3) thông qua các phép biến đổi giảm trừ hàng và cột trên ma trận chi phí.",
+    "detailed_explanation_vi": "Bằng cách trừ giá trị nhỏ nhất của mỗi hàng và cột, thuật toán tạo ra các số 0 đại diện cho các cơ hội gán không tốn chi phí cơ hội, sau đó phủ các số 0 bằng số đường thẳng tối thiểu để tìm phép gán tối ưu.",
+    "practical_example": "Phân công 4 tuyến giao hàng cho 4 tài xế xe tải sao cho tổng quãng đường ngắn nhất. Thuật toán Hungarian tìm ra phương án tối ưu sau 3 bước lặp giảm trừ ma trận.",
+    "related_terms": [
+      "GLOS-014",
+      "GLOS-009"
+    ]
+  },
+  {
+    "id": "GLOS-016",
+    "term_en": "Economic Order Quantity (EOQ)",
+    "term_vi": "Lượng đặt hàng kinh tế (EOQ)",
+    "domain": "Inventory",
+    "chapter": "chap-04",
+    "definition_en": "The optimal order batch size Q* that minimizes the total annual variable cost of inventory by perfectly balancing annual setup/ordering costs with annual inventory holding costs.",
+    "definition_vi": "Quy mô lô đặt hàng tối ưu Q* giúp cực tiểu hóa tổng chi phí biến đổi hàng năm của tồn kho bằng cách cân bằng hoàn hảo giữa chi phí đặt hàng hàng năm và chi phí lưu kho hàng năm.",
+    "detailed_explanation_vi": "Được xây dựng bởi Ford W. Harris và mở rộng bởi R. H. Wilson. Khi quy mô đặt hàng Q tăng, chi phí đặt hàng giảm (do ít lần đặt hơn) nhưng chi phí lưu kho tăng (do tồn kho bình quân Q/2 cao hơn). Điểm cắt nhau là EOQ.",
+    "practical_example": "Tại công ty ACT, với nhu cầu 6,000 lốp/năm, chi phí đặt hàng $115/lần và chi phí lưu kho $4.20/lốp/năm, công thức căn bậc hai Wilson xác định lượng đặt hàng kinh tế là Q* = 573 lốp xe.",
+    "related_terms": [
+      "GLOS-017",
+      "GLOS-018",
+      "GLOS-020",
+      "GLOS-025"
+    ]
+  },
+  {
+    "id": "GLOS-017",
+    "term_en": "Setup Cost / Ordering Cost (K)",
+    "term_vi": "Chi phí thiết lập / Chi phí đặt hàng (K)",
+    "domain": "Inventory",
+    "chapter": "chap-04",
+    "definition_en": "The fixed administrative, processing, and delivery cost incurred each time an order is placed or a production line is recalibrated, completely independent of the quantity ordered.",
+    "definition_vi": "Chi phí cố định phát sinh cho mỗi lần đặt hàng mua hoặc mỗi lần thiết lập dây chuyền sản xuất, hoàn toàn không phụ thuộc vào quy mô số lượng của đơn hàng đó.",
+    "detailed_explanation_vi": "Bao gồm công lao động tạo đơn mua hàng (PO), liên lạc nhà cung ứng, cước phí cố định vận chuyển, nhận hàng, bốc dỡ, kiểm tra chất lượng (QA/QC), nhập kho và xử lý hóa đơn kế toán.",
+    "practical_example": "Tại ACT, chi phí đặt hàng K = $115 bao gồm $90 nhân công (6 giờ x $15/giờ) và $25 chi phí quản lý hành chính, giám sát và vận hành văn phòng.",
+    "related_terms": [
+      "GLOS-016",
+      "GLOS-018"
+    ]
+  },
+  {
+    "id": "GLOS-018",
+    "term_en": "Holding Cost / Carrying Cost (h)",
+    "term_vi": "Chi phí lưu kho / Chi phí tồn trữ (h)",
+    "domain": "Inventory",
+    "chapter": "chap-04",
+    "definition_en": "The total cost associated with keeping one unit of inventory in storage for one full year, comprising capital opportunity cost, warehousing rent, insurance, taxes, and risk of obsolescence.",
+    "definition_vi": "Toàn bộ chi phí phát sinh để giữ một đơn vị hàng trong kho suốt một năm, bao gồm chi phí cơ hội vốn, tiền thuê kho bãi, bảo hiểm, thuế tồn kho, hư hỏng và lỗi thời.",
+    "detailed_explanation_vi": "Thường được tính theo công thức h = I * c, trong đó I là tỷ lệ chi phí tồn trữ hàng năm (%/năm) và c là giá vốn đơn vị sản phẩm. Chi phí cơ hội vốn (lãi suất tiền gửi hoặc lợi nhuận kinh doanh bị bỏ lỡ) thường chiếm 60-80% giá trị của h.",
+    "practical_example": "Tại ACT, giá lốp c = $20, chi phí cơ hội vốn là 15%, chi phí kho bãi/bảo hiểm là 6% -> I = 21%, dẫn đến chi phí lưu kho h = 0.21 * $20 = $4.20/lốp/năm.",
+    "related_terms": [
+      "GLOS-016",
+      "GLOS-017",
+      "GLOS-025"
+    ]
+  },
+  {
+    "id": "GLOS-019",
+    "term_en": "Shortage Cost / Stockout Penalty (p)",
+    "term_vi": "Chi phí thiếu hụt / Phạt hết hàng (p)",
+    "domain": "Inventory",
+    "chapter": "chap-04",
+    "definition_en": "The economic penalty incurred when demand cannot be immediately met from stock, including loss of customer goodwill, discounts for delayed delivery, expedited freight, or lost profit margins.",
+    "definition_vi": "Tổn thất kinh tế phát sinh khi tồn kho không đủ đáp ứng nhu cầu khách hàng, bao gồm mất uy tín thương hiệu, tiền bồi thường trễ hạn, cước vận chuyển hỏa tốc hoặc mất hoàn toàn lợi nhuận biên.",
+    "detailed_explanation_vi": "Trong mô hình Planned Shortages, khách hàng chấp nhận chờ (backorders) nhưng doanh nghiệp chịu chi phí p tính trên mỗi đơn vị nợ trên mỗi đơn vị thời gian chờ đợi.",
+    "practical_example": "ACT ước tính tổn thất do thiếu lốp là $7.50 cho mỗi lốp nợ mỗi năm do phải giảm giá giữ chân khách hàng và chi phí theo dõi đơn hàng tồn đọng.",
+    "related_terms": [
+      "GLOS-016",
+      "GLOS-021"
+    ]
+  },
+  {
+    "id": "GLOS-020",
+    "term_en": "Total Variable Cost (TVC)",
+    "term_vi": "Tổng chi phí biến đổi tồn kho hàng năm (TVC)",
+    "domain": "Inventory",
+    "chapter": "chap-04",
+    "definition_en": "The summation of annual order setup costs and annual inventory carrying costs that vary dynamically with the choice of order quantity Q.",
+    "definition_vi": "Tổng của chi phí đặt hàng hàng năm và chi phí lưu kho hàng năm thay đổi phụ thuộc vào quyết định lựa chọn quy mô lô hàng Q.",
+    "detailed_explanation_vi": "Trong mô hình EOQ cơ bản, giá mua c * D là cố định nên không ảnh hưởng đến điểm cực trị, do đó hàm mục tiêu chỉ cần cực tiểu hóa TVC = K(D/Q) + h(Q/2).",
+    "practical_example": "Tại ACT với chính sách cũ Q=1000, TVC = 115*(6000/1000) + 4.2*(1000/2) = $690 + $2100 = $2,790/năm. Với EOQ tối ưu Q=573, TVC giảm xuống $2,407.48/năm.",
+    "related_terms": [
+      "GLOS-016",
+      "GLOS-017",
+      "GLOS-018"
+    ]
+  },
+  {
+    "id": "GLOS-021",
+    "term_en": "Planned Shortages / Backorders",
+    "term_vi": "Thiếu hàng có kế hoạch / Đơn hàng nợ (Backorders)",
+    "domain": "Inventory",
+    "chapter": "chap-05",
+    "definition_en": "An inventory management strategy where management deliberately allows stockouts to occur during each replenishment cycle because the savings from reduced holding costs exceed the shortage penalties.",
+    "definition_vi": "Chiến lược quản trị tồn kho trong đó doanh nghiệp chủ động cho phép xuất hiện tình trạng thiếu hàng trong mỗi chu kỳ vì lợi ích giảm chi phí lưu kho lớn hơn chi phí phạt thiếu hụt.",
+    "detailed_explanation_vi": "Toàn bộ lượng thiếu hàng S được khách hàng đồng ý chờ và sẽ được bù đắp ngay khi lô hàng mới nhập kho. Tồn kho cực đại chỉ đạt Q - S, giúp hạ thấp tồn kho bình quân.",
+    "practical_example": "Tại ACT, cho phép thiếu hụt có kế hoạch S* = 257 lốp giúp giảm tồn kho cực đại từ 573 xuống 459 lốp, tiết kiệm tổng chi phí thêm gần 20% xuống còn $1,927.56/năm.",
+    "related_terms": [
+      "GLOS-016",
+      "GLOS-019"
+    ]
+  },
+  {
+    "id": "GLOS-022",
+    "term_en": "Quantity Discount",
+    "term_vi": "Chiết khấu theo số lượng",
+    "domain": "Inventory",
+    "chapter": "chap-05",
+    "definition_en": "A pricing incentive offered by suppliers that reduces the per-unit purchase price c(Q) when order batch sizes exceed designated threshold volume breakpoints.",
+    "definition_vi": "Chính sách ưu đãi giá do nhà cung cấp đưa ra nhằm giảm đơn giá mua c(Q) khi quy mô đơn hàng vượt qua các ngưỡng số lượng quy định (breakpoints).",
+    "detailed_explanation_vi": "Do đơn giá mua thay đổi theo Q, chi phí mua hàng hàng năm c*D không còn là hằng số. Ta phải so sánh Tổng chi phí toàn phần TC = c*D + K(D/Q) + h(Q/2) tại các điểm EOQ khả thi và các điểm ngưỡng (breakpoints).",
+    "practical_example": "Eversafe giảm giá 1% cho ACT nếu mua từ 750 lốp trở lên ($19.80). Điểm tối ưu kinh tế cho ACT là đặt đúng ngưỡng breakpoint Q = 750 lốp, tiết kiệm tổng chi phí mua và lưu kho hơn $1,100/năm.",
+    "related_terms": [
+      "GLOS-016",
+      "GLOS-020"
+    ]
+  },
+  {
+    "id": "GLOS-023",
+    "term_en": "Economic Production Quantity (EPQ)",
+    "term_vi": "Lượng sản xuất kinh tế (EPQ / Bổ sung dần)",
+    "domain": "Inventory",
+    "chapter": "chap-05",
+    "definition_en": "An inventory lot-sizing model for in-house manufacturing where goods are replenished continuously at a finite daily production rate p that exceeds the consumption rate d.",
+    "definition_vi": "Mô hình quy mô lô sản xuất tối ưu nội bộ khi hàng hóa được bổ sung dần dần với tốc độ sản xuất hữu hạn p lớn hơn tốc độ tiêu thụ d của dây chuyền lắp ráp.",
+    "detailed_explanation_vi": "Vì hàng vừa sản xuất vừa được xuất dùng nên tồn kho không tăng đột ngột lên Q mà tích lũy theo tỷ lệ (p - d). Mức tồn kho cực đại chỉ là Q*(1 - d/p), làm giảm chi phí lưu kho so với mô hình EOQ mua ngoài.",
+    "practical_example": "Tại nhà máy tivi SOCA, xưởng loa sản xuất 3,000 loa/ngày trong khi lắp ráp dùng 1,000 loa/ngày. Lượng sản xuất kinh tế tối ưu là Q* = 50,000 loa, chạy trong 16.67 ngày và nghỉ trong 33.33 ngày.",
+    "related_terms": [
+      "GLOS-016",
+      "GLOS-024"
+    ]
+  },
+  {
+    "id": "GLOS-024",
+    "term_en": "Gradual Replenishment Factor (1 - d/p)",
+    "term_vi": "Hệ số bổ sung dần (1 - d/p)",
+    "domain": "Inventory",
+    "chapter": "chap-05",
+    "definition_en": "The mathematical damping coefficient that scales down the maximum and average inventory levels in an EPQ system to reflect concurrent production and consumption.",
+    "definition_vi": "Hệ số suy giảm toán học (1 - d/p) giúp điều chỉnh giảm mức tồn kho cực đại và bình quân trong hệ thống EPQ để phản ánh việc tiêu thụ diễn ra đồng thời trong thời gian sản xuất.",
+    "detailed_explanation_vi": "Hệ số này luôn nằm trong khoảng (0, 1). Khi tốc độ sản xuất p rất lớn (tiến đến vô cùng), d/p tiến về 0 và hệ số tiến về 1, đưa công thức EPQ quay trở lại công thức EOQ cơ bản.",
+    "practical_example": "Tại SOCA, d = 1,000 và p = 3,000 nên 1 - d/p = 1 - 1/3 = 2/3. Mức tồn kho bình quân được nhân với 2/3, giúp giảm 33.3% lượng tồn trữ cần tài trợ vốn so với nhập hàng một lần.",
+    "related_terms": [
+      "GLOS-023",
+      "GLOS-018"
+    ]
+  },
+  {
+    "id": "GLOS-025",
+    "term_en": "Reorder Point (ROP)",
+    "term_vi": "Điểm đặt hàng lại (ROP)",
+    "domain": "Inventory",
+    "chapter": "chap-04",
+    "definition_en": "The predetermined inventory level at which a new replenishment purchase order must be issued to ensure delivery arrives just as existing stock is depleted.",
+    "definition_vi": "Mức tồn kho định lượng báo hiệu thời điểm cần phát hành đơn đặt hàng mới để hàng về tới kho đúng lúc lượng hàng hiện có vừa cạn kiệt.",
+    "detailed_explanation_vi": "Với nhu cầu hằng ngày d và thời gian giao hàng (Lead Time) L, điểm đặt hàng lại xác định bằng ROP = d * L trong điều kiện tất định, hoặc ROP = d * L + Safety Stock trong điều kiện bất định.",
+    "practical_example": "Tại ACT, nhu cầu ngày d = 500/25 = 20 lốp/ngày, thời gian nhà máy giao hàng là 9 ngày làm việc. Điểm đặt hàng lại là ROP = 20 * 9 = 180 lốp. Khi kho còn 180 lốp, thủ kho phải phát hành đơn hàng mới.",
+    "related_terms": [
+      "GLOS-016",
+      "GLOS-026"
+    ]
+  },
+  {
+    "id": "GLOS-026",
+    "term_en": "Lead Time (L)",
+    "term_vi": "Thời gian thực hiện đơn hàng / Thời gian chờ giao hàng",
+    "domain": "Inventory",
+    "chapter": "chap-04",
+    "definition_en": "The total elapsed time between the authorization and placement of a replenishment purchase order and the physical receipt, inspection, and availability of items in the warehouse.",
+    "definition_vi": "Tổng thời gian trôi qua kể từ khi phê duyệt và phát hành đơn đặt hàng cho đến khi hàng hóa được vận chuyển tới nơi, kiểm nghiệm chất lượng và sẵn sàng xuất kho.",
+    "detailed_explanation_vi": "Trong ERP, Lead Time được cấu hình chi tiết thành: Purchasing Lead Time (xử lý đơn), Vendor Production Time, Transit Time (vận chuyển trên đường), và Goods Receipt Processing Time (nghiệm thu nhập kho).",
+    "practical_example": "Eversafe cam kết thời gian Lead Time là 9 ngày làm việc kể từ lúc nhận fax/EDI từ ACT đến khi xe tải dỡ hàng tại kho bờ Đông.",
+    "related_terms": [
+      "GLOS-025",
+      "GLOS-001"
+    ]
+  },
+  {
+    "id": "GLOS-027",
+    "term_en": "Safety Stock (SS)",
+    "term_vi": "Tồn kho an toàn / Dự trữ bảo hiểm",
+    "domain": "Inventory",
+    "chapter": "chap-04",
+    "definition_en": "Surplus cushion inventory maintained above anticipated cycle stock to buffer against unexpected demand surges or supplier delivery delays during lead time.",
+    "definition_vi": "Lượng tồn kho đệm được duy trì thường trực trên mức tồn kho chu kỳ nhằm chống đỡ các biến động bất thường do nhu cầu tăng đột biến hoặc nhà cung ứng chậm giao hàng.",
+    "detailed_explanation_vi": "Quy mô tồn kho an toàn tỷ lệ thuận với độ lệch chuẩn của nhu cầu và mức dịch vụ khách hàng mong muốn (Service Level z-factor trong phân phối chuẩn).",
+    "practical_example": "Nếu ACT muốn đạt mức dịch vụ 98% chống lại sự chậm trễ của xe tải chở lốp từ Eversafe trong mùa mưa bão, công ty duy trì 50 lốp dự trữ an toàn thường trực.",
+    "related_terms": [
+      "GLOS-016",
+      "GLOS-025",
+      "GLOS-028"
+    ]
+  },
+  {
+    "id": "GLOS-028",
+    "term_en": "Service Level",
+    "term_vi": "Mức dịch vụ khách hàng (Service Level)",
+    "domain": "Inventory",
+    "chapter": "chap-04",
+    "definition_en": "The target probability that incoming customer demand will be fulfilled completely and immediately from available on-hand stock without experiencing a stockout.",
+    "definition_vi": "Xác suất mục tiêu đảm bảo mọi nhu cầu đặt hàng của khách hàng được đáp ứng đầy đủ và ngay lập tức từ lượng hàng sẵn có trong kho mà không xảy ra hết hàng.",
+    "detailed_explanation_vi": "Nâng mức dịch vụ từ 95% lên 99% đòi hỏi chi phí tồn kho an toàn tăng vọt theo cấp số nhân do đường phân phối chuẩn dốc ở phần đuôi xác suất.",
+    "practical_example": "Một nhà phân phối linh kiện điện tử cấu hình Service Level 99.5% cho các mặt hàng A có giá trị cao và 90% cho các phụ kiện thông thường nhóm C trong bảng phân loại ABC.",
+    "related_terms": [
+      "GLOS-027",
+      "GLOS-019"
+    ]
+  },
+  {
+    "id": "GLOS-029",
+    "term_en": "Continuous Review Policy (s, Q)",
+    "term_vi": "Chính sách kiểm tra tồn kho liên tục",
+    "domain": "Inventory",
+    "chapter": "chap-04",
+    "definition_en": "An inventory monitoring policy enabled by real-time ERP systems where stock levels are continuously tracked after every transaction, triggering an order Q whenever inventory falls to or below reorder point s.",
+    "definition_vi": "Chính sách kiểm soát tồn kho theo thời gian thực trong ERP, liên tục cập nhật số dư sau mỗi giao dịch xuất nhập, tự động phát lệnh đặt đúng lượng Q khi tồn kho chạm điểm s.",
+    "detailed_explanation_vi": "Chính sách này tối ưu hóa độ an toàn và phản ứng nhanh nhưng đòi hỏi hệ thống phần mềm ERP đồng bộ mã vạch/RFID và quy trình ghi nhận kho chuẩn xác.",
+    "practical_example": "Kho phân phối ACT sử dụng đầu đọc mã vạch quét lốp khi xuất xe. Khi hệ thống ERP ghi nhận tồn khả dụng chạm mức 180 lốp, hệ thống tự động sinh Purchase Requisition chuyển phòng mua hàng.",
+    "related_terms": [
+      "GLOS-025",
+      "GLOS-030"
+    ]
+  },
+  {
+    "id": "GLOS-030",
+    "term_en": "Periodic Review Policy (R, S)",
+    "term_vi": "Chính sách kiểm tra tồn kho định kỳ",
+    "domain": "Inventory",
+    "chapter": "chap-04",
+    "definition_en": "An inventory control policy where stock levels are reviewed at fixed, periodic calendar intervals R (e.g., weekly), placing an order sufficient to bring inventory up to target maximum level S.",
+    "definition_vi": "Chính sách kiểm soát trong đó mức tồn kho chỉ được kiểm đếm vào các khoảng thời gian cố định R (ví dụ: sáng thứ Hai hàng tuần), và phát lệnh đặt hàng bổ sung lên mức mục tiêu S.",
+    "detailed_explanation_vi": "Chính sách này phù hợp khi doanh nghiệp gom nhiều mặt hàng của cùng một nhà cung ứng vào một chuyến xe tải để tiết kiệm cước vận chuyển, dù đòi hỏi mức tồn kho an toàn cao hơn.",
+    "practical_example": "Chuỗi cửa hàng tiện lợi kiểm kê lượng đồ uống lon vào 22h mỗi tối Chủ nhật và đặt hàng bổ sung để sáng thứ Ba nhà sản xuất giao đủ mức đầy kệ 200 lon.",
+    "related_terms": [
+      "GLOS-029",
+      "GLOS-025"
+    ]
+  },
+  {
+    "id": "GLOS-031",
+    "term_en": "Assignees",
+    "term_vi": "Đối tượng phân công / Người nhận nhiệm vụ",
+    "domain": "Operations Research",
+    "chapter": "chap-03",
+    "definition_en": "The entities (people, machines, vehicles, plants, facilities) that are to perform the designated tasks when formulating a problem as an assignment problem.",
+    "definition_vi": "Các thực thể (nhân sự, máy móc, phương tiện, nhà máy xưởng) được chỉ định để thực thi các công việc cụ thể trong bài toán phân công.",
+    "detailed_explanation_vi": "Mỗi đối tượng phân công có năng suất, năng lực và chi phí thực hiện khác nhau tùy theo từng nhiệm vụ cụ thể được giao.",
+    "practical_example": "Trong Better Products Co., 3 nhà máy đóng vai trò là các Assignees nhận nhiệm vụ sản xuất các dòng sản phẩm mới.",
+    "related_terms": [
+      "GLOS-014",
+      "GLOS-032"
+    ]
+  },
+  {
+    "id": "GLOS-032",
+    "term_en": "Tasks",
+    "term_vi": "Nhiệm vụ / Công việc phân công",
+    "domain": "Operations Research",
+    "chapter": "chap-03",
+    "definition_en": "The distinct jobs, operations, or production runs to be performed by the assignees in an assignment model.",
+    "definition_vi": "Các công việc, công đoạn hoặc đợt sản xuất riêng biệt cần được thực hiện bởi các đối tượng phân công trong mô hình phân công.",
+    "detailed_explanation_vi": "Mỗi nhiệm vụ đòi hỏi phải được hoàn thành bởi đúng một đối tượng phân công trong bài toán phân công chuẩn.",
+    "practical_example": "4 dòng sản phẩm mới (Product 1, 2, 3, 4) là 4 tasks cần được phân bổ cho 3 nhà máy.",
+    "related_terms": [
+      "GLOS-014",
+      "GLOS-031"
+    ]
+  },
+  {
+    "id": "GLOS-033",
+    "term_en": "Cost Table",
+    "term_vi": "Bảng chi phí phân công",
+    "domain": "Operations Research",
+    "chapter": "chap-03",
+    "definition_en": "The matrix that summarizes an assignment problem by specifying the cost of assigning each specific assignee to each specific task.",
+    "definition_vi": "Bảng ma trận tóm tắt bài toán phân công, chỉ rõ chi phí tương ứng khi gán từng đối tượng cho từng nhiệm vụ cụ thể.",
+    "detailed_explanation_vi": "Bảng chi phí là dữ liệu đầu vào trực tiếp cho thuật toán Hungarian và mô hình quy hoạch nguyên nhị phân.",
+    "practical_example": "Bảng Table case 2.2 thể hiện chi phí hoạt động hàng ngày ($/day) khi gán từng nhà máy cho từng sản phẩm trong Case Better Products.",
+    "related_terms": [
+      "GLOS-014",
+      "GLOS-015"
+    ]
+  },
+  {
+    "id": "GLOS-034",
+    "term_en": "Sources",
+    "term_vi": "Điểm nguồn / Nơi cung cấp",
+    "domain": "Transportation",
+    "chapter": "chap-01",
+    "definition_en": "The supply centers or origins in a transportation problem from which commodity shipments originate.",
+    "definition_vi": "Các trung tâm cung cấp hoặc điểm xuất phát trong bài toán vận tải, nơi phát sinh các lô hàng hóa vận chuyển.",
+    "detailed_explanation_vi": "Trong mạng lưới chuỗi cung ứng, các nguồn có thể là nhà máy sản xuất, mỏ khai khoáng, kho tổng hoặc cảng nhập khẩu.",
+    "practical_example": "Tại P&T Co., 3 điểm nguồn là các xưởng đóng hộp tại Bellingham, Eugene, và Albert Lea.",
+    "related_terms": [
+      "GLOS-006",
+      "GLOS-035"
+    ]
+  },
+  {
+    "id": "GLOS-035",
+    "term_en": "Destinations",
+    "term_vi": "Điểm đích / Nơi tiếp nhận",
+    "domain": "Transportation",
+    "chapter": "chap-01",
+    "definition_en": "The receiving centers, regional distribution hubs, or customer markets in a transportation problem where goods are delivered.",
+    "definition_vi": "Các trung tâm tiếp nhận, kho trung chuyển khu vực hoặc thị trường khách hàng trong bài toán vận tải, nơi tiếp nhận hàng hóa chuyển đến.",
+    "detailed_explanation_vi": "Mỗi điểm đích có một mức nhu cầu xác định phải được thỏa mãn từ các chuyến hàng gửi từ các điểm nguồn.",
+    "practical_example": "Tại P&T Co., 4 điểm đích là các kho phân phối tại Sacramento, Salt Lake City, Rapid City, và Albuquerque.",
+    "related_terms": [
+      "GLOS-006",
+      "GLOS-034"
+    ]
+  },
+  {
+    "id": "GLOS-036",
+    "term_en": "Acquisition Cost (c)",
+    "term_vi": "Chi phí thu mua / Chi phí giá vốn (c)",
+    "domain": "Inventory",
+    "chapter": "chap-04",
+    "definition_en": "The direct unit cost paid to purchase or manufacture an item of inventory.",
+    "definition_vi": "Chi phí trực tiếp trên mỗi đơn vị sản phẩm phải chi trả khi mua ngoài hoặc chi phí xuất xưởng khi tự sản xuất.",
+    "detailed_explanation_vi": "Là căn cứ để định giá hàng tồn kho trên bảng cân đối kế toán và cơ sở tính toán chi phí lưu kho vốn (Holding cost).",
+    "practical_example": "Eversafe bán lốp 185/70 R13 cho ACT với đơn giá thu mua c = $20/lốp.",
+    "related_terms": [
+      "GLOS-018",
+      "GLOS-022"
+    ]
+  },
+  {
+    "id": "GLOS-037",
+    "term_en": "Manufacturing Inventory",
+    "term_vi": "Hàng tồn kho sản xuất",
+    "domain": "ERP Systems",
+    "chapter": "chap-04",
+    "definition_en": "Items that contribute to or become part of an enterprise's manufactured products, classified as raw materials, work-in-process (WIP), and finished goods.",
+    "definition_vi": "Các vật tư đóng góp vào hoặc cấu thành nên sản phẩm sản xuất của doanh nghiệp, gồm: Nguyên vật liệu thô, Bán thành phẩm dở dang (WIP), và Thành phẩm nhập kho.",
+    "detailed_explanation_vi": "Quản trị hàng tồn kho sản xuất là trọng tâm của module SAP PP và Oracle Manufacturing, quyết định hiệu quả quay vòng vốn lưu động.",
+    "practical_example": "Tại SOCA, cuộn dây đồng, nam châm và màng loa là nguyên liệu thô; cụm loa hoàn thiện trước khi ráp vào tivi là bán thành phẩm; tivi hoàn chỉnh đóng thùng là thành phẩm.",
+    "related_terms": [
+      "GLOS-023",
+      "GLOS-038"
+    ]
+  },
+  {
+    "id": "GLOS-038",
+    "term_en": "Cycle Stock",
+    "term_vi": "Tồn kho chu kỳ",
+    "domain": "Inventory",
+    "chapter": "chap-04",
+    "definition_en": "The portion of inventory that is depleted during normal business operations between successive replenishment shipments, averaging Q/2 under constant demand.",
+    "definition_vi": "Phần tồn kho được tiêu thụ trong các hoạt động kinh doanh bình thường giữa các lần nhập hàng liên tiếp, có giá trị bình quân bằng Q/2 trong điều kiện nhu cầu ổn định.",
+    "detailed_explanation_vi": "Quy mô tồn kho chu kỳ tỷ lệ thuận trực tiếp với kích thước lô hàng Q. Giảm kích thước lô Q sẽ làm giảm ngay tồn kho chu kỳ.",
+    "practical_example": "Khi ACT đặt đơn hàng Q = 1,000 lốp, tồn kho chu kỳ bình quân trong kho là 500 lốp.",
+    "related_terms": [
+      "GLOS-016",
+      "GLOS-027"
+    ]
+  },
+  {
+    "id": "GLOS-039",
+    "term_en": "Excel Solver GRG Non-Linear",
+    "term_vi": "Bộ giải phi tuyến Generalized Reduced Gradient trong Excel Solver",
+    "domain": "Operations Research",
+    "chapter": "chap-04",
+    "definition_en": "The numerical optimization engine in Microsoft Excel Solver utilized when the objective function or constraints contain smooth nonlinear expressions.",
+    "definition_vi": "Công cụ tối ưu hóa số trong Microsoft Excel Solver được sử dụng khi hàm mục tiêu hoặc các ràng buộc chứa các biểu thức phi tuyến khả vi liên tục.",
+    "detailed_explanation_vi": "Trong bài toán EOQ, do hàm chi phí chứa thành phần K*(D/Q) là hàm hypebol bậc -1 theo biến Q, bộ giải Simplex LP không thể áp dụng được mà bắt buộc phải chọn GRG Non-Linear.",
+    "practical_example": "Khi lập bảng tính Excel cho bài toán ACT (Slide 93-94), người dùng phải chọn phương pháp giải là GRG Nonlinear để Solver tìm ra nghiệm Q* = 573.2.",
+    "related_terms": [
+      "GLOS-005",
+      "GLOS-016"
+    ]
+  },
+  {
+    "id": "GLOS-040",
+    "term_en": "QM for Windows",
+    "term_vi": "Phần mềm QM for Windows",
+    "domain": "Operations Research",
+    "chapter": "chap-01",
+    "definition_en": "A dedicated educational and managerial decision-support software suite for quantitative analysis in operations management and management science.",
+    "definition_vi": "Bộ phần mềm hỗ trợ ra quyết định chuyên dụng trong quản trị vận hành và khoa học quản lý, cung cấp các module định lượng sẵn có như Transportation, Assignment, Inventory (EOQ/EPQ).",
+    "detailed_explanation_vi": "Khác với Excel Solver đòi hỏi người dùng tự thiết lập công thức và hàm mục tiêu, QM for Windows chỉ yêu cầu nhập số liệu ma trận vào biểu mẫu định sẵn và tự động xuất báo cáo chi tiết các bước giải.",
+    "practical_example": "Sinh viên UEH sử dụng module Transportation và Inventory trong QM for Windows để giải nhanh các bài toán P&T Co., ACT và SOCA trong các buổi thực hành.",
+    "related_terms": [
+      "GLOS-006",
+      "GLOS-016"
+    ]
+  }
+]
